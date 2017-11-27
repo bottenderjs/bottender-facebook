@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bottender": "latest",
+    "bottender-fb": "latest"
+  }
+}
