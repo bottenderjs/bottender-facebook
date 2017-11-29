@@ -1124,9 +1124,9 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bottender@^0.14.5:
-  version "0.14.5"
-  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.14.5.tgz#87a32db09300863319e0e81e129e812ec7ea8d77"
+bottender@^0.14.6:
+  version "0.14.6"
+  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.14.6.tgz#a25179888dbde4c58174536a0c67e7b1b7f7cb51"
   dependencies:
     axios "^0.17.1"
     body-parser "^1.18.2"
@@ -1137,16 +1137,20 @@ bottender@^0.14.5:
     cross-spawn "^5.1.0"
     date-fns "^1.29.0"
     debug "^3.1.0"
+    deep-object-diff "^1.0.4"
     delay "^2.0.0"
     express "^4.16.2"
     figures "^2.0.0"
+    file-type "^7.3.0"
     fs-extra "^4.0.2"
+    hasha "^3.0.0"
     import-fresh "^2.0.0"
     inquirer "^4.0.0"
     invariant "^2.2.2"
     ioredis "^3.2.1"
     jfs "^0.3.0"
     joi "11.3.4"
+    jsonfile "^4.0.0"
     koa "^2.4.1"
     koa-bodyparser "^4.2.0"
     koa-compose "^4.0.0"
@@ -1154,15 +1158,18 @@ bottender@^0.14.5:
     lodash "^4.17.4"
     lru-cache "^4.1.1"
     messaging-api-line "^0.5.7"
-    messaging-api-messenger "^0.5.9"
+    messaging-api-messenger "^0.5.12"
     messaging-api-slack "^0.5.10"
     messaging-api-telegram "^0.5.4"
     micro "^9.0.1"
     minimist "^1.2.0"
     mongodb "^2.2.33"
     pascal-case "^2.0.1"
+    pkg-dir "^2.0.0"
     prompt-confirm "^1.2.0"
+    read-chunk "^2.1.0"
     readline "^1.3.0"
+    recursive-readdir "^2.2.1"
     restify "^6.3.2"
     shortid "^2.2.8"
     stringify-object "^3.2.1"
@@ -1170,7 +1177,7 @@ bottender@^0.14.5:
     validate-npm-package-name "^3.0.0"
     warning "^3.0.0"
 
-brace-expansion@^1.1.7:
+brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
   dependencies:
@@ -1648,6 +1655,10 @@ deep-extend@~0.4.0:
 deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
+
+deep-object-diff@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/deep-object-diff/-/deep-object-diff-1.0.4.tgz#ee4c93b4a9da2962a568964c935a1989a416f9c4"
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -2140,6 +2151,10 @@ file-type@^4.1.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-4.4.0.tgz#1b600e5fca1fbdc6e80c0a70c71c8dba5f7906c5"
 
+file-type@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-7.3.0.tgz#18869760e10c36c0416d53083684fcfc0d59df3a"
+
 filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
@@ -2481,6 +2496,12 @@ has@^1.0.1:
   resolved "https://registry.yarnpkg.com/has/-/has-1.0.1.tgz#8461733f538b0837c9361e39a9ab9e9704dc2f28"
   dependencies:
     function-bind "^1.0.2"
+
+hasha@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/hasha/-/hasha-3.0.0.tgz#52a32fab8569d41ca69a61ff1a214f8eb7c8bd39"
+  dependencies:
+    is-stream "^1.0.1"
 
 hawk@3.1.3, hawk@~3.1.3:
   version "3.1.3"
@@ -2890,7 +2911,7 @@ is-resolvable@^1.0.0:
   dependencies:
     tryit "^1.0.1"
 
-is-stream@1.1.0, is-stream@^1.1.0:
+is-stream@1.1.0, is-stream@^1.0.1, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
 
@@ -3742,7 +3763,7 @@ messaging-api-line@^0.5.7:
     image-type "^3.0.0"
     warning "^3.0.0"
 
-messaging-api-messenger@^0.5.12, messaging-api-messenger@^0.5.9:
+messaging-api-messenger@^0.5.12:
   version "0.5.12"
   resolved "https://registry.yarnpkg.com/messaging-api-messenger/-/messaging-api-messenger-0.5.12.tgz#f85817caf2ffa18fad6e92f36c589d85d79e9ee3"
   dependencies:
@@ -3829,6 +3850,12 @@ minimalistic-assert@^1.0.0:
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
     brace-expansion "^1.1.7"
+
+minimatch@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.3.tgz#2a4e4090b96b2db06a9d7df01055a62a77c9b774"
+  dependencies:
+    brace-expansion "^1.0.0"
 
 minimist@0.0.8:
   version "0.0.8"
@@ -4284,6 +4311,12 @@ pkg-dir@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
+pkg-dir@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
+  dependencies:
+    find-up "^2.1.0"
+
 pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
@@ -4458,6 +4491,13 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+read-chunk@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/read-chunk/-/read-chunk-2.1.0.tgz#6a04c0928005ed9d42e1a6ac5600e19cbc7ff655"
+  dependencies:
+    pify "^3.0.0"
+    safe-buffer "^5.1.1"
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
@@ -4547,6 +4587,12 @@ readline-utils@^2.2.1, readline-utils@^2.2.3:
 readline@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/readline/-/readline-1.3.0.tgz#c580d77ef2cfc8752b132498060dc9793a7ac01c"
+
+recursive-readdir@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.1.tgz#90ef231d0778c5ce093c9a48d74e5c5422d13a99"
+  dependencies:
+    minimatch "3.0.3"
 
 redis-commands@^1.2.0:
   version "1.3.1"

@@ -72,4 +72,4 @@ Make your changes and tests, and make sure the tests pass.
 
 ## License
 
-MIT © [Yoctol](https://github.com/Yoctol/bottender-fb)
+MIT © [Yoctol](https://github.com/bottenderjs/bottender-fb)

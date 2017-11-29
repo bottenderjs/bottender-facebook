@@ -15,11 +15,14 @@ const bot = new Bot({
 });
 
 bot.onEvent(async context => {
+  console.log(context.event);
+
   if (context.event.isCommentAdd && context.event.comment.post_id === POST_ID) {
     const commentId = context.event.rawEvent.value.comment_id;
 
     try {
       await context.client.sendPrivateReply(commentId, 'OK!');
+      await context.client.sendComment(commentId, 'Public Reply!');
     } catch (err) {
       console.log(err.response.data);
     }
