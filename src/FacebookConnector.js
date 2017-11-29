@@ -2,7 +2,6 @@
 
 import { MessengerConnector, MessengerContext } from 'bottender';
 import { MessengerClient } from 'messaging-api-messenger';
-import warning from 'warning';
 
 import FacebookEvent from './FacebookEvent';
 

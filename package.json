@@ -45,6 +45,9 @@
     "rimraf": "^2.6.2"
   },
   "lint-staged": {
-    "*.js": "eslint --fix"
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
