@@ -2,6 +2,8 @@ const { Bot } = require('bottender');
 const { createServer } = require('bottender/koa');
 const { FacebookConnector } = require('bottender-fb');
 
+require('dotenv').config();
+
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 const APP_SECRET = process.env.APP_SECRET;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
