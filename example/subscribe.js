@@ -9,7 +9,7 @@ const WEBHOOK_URL = process.env.WEBHOOK_URL;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
 /**
- * https://developers.facebook.com/docs/facebook-login/access-tokens/?locale=zh_TW#pagetokens
+ * https://developers.facebook.com/docs/facebook-login/access-tokens/#pagetokens
  *
  * user token + id => page token
  *
@@ -22,7 +22,7 @@ async function generatePageToken({ userToken, pageId }) {
   const { data } = await axios.get(
     `https://graph.facebook.com/me/accounts?access_token=${userToken}`
   );
-  return data.data.find(item => item.id == pageId);
+  return data.data.find(item => item.id === pageId);
 }
 
 /**
@@ -44,7 +44,9 @@ async function subscribe({ appId, appSecret, verifyToken, url, fields = [] }) {
 // App subscribe page
 async function subscribedApp({ pageId, pageToken }) {
   return axios.post(
-    `https://graph.facebook.com/${pageId}/subscribed_apps?access_token=${pageToken}`
+    `https://graph.facebook.com/${pageId}/subscribed_apps?access_token=${
+      pageToken
+    }`
   );
 }
 
