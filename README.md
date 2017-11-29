@@ -1,6 +1,6 @@
 # Bottender FB
 
-> Facebook connector for Bottender.
+> Facebook connector for [Bottender](https://github.com/Yoctol/bottender).
 
 ## Installation
 
