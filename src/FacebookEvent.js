@@ -3,7 +3,16 @@
 import { MessengerEvent } from 'bottender';
 
 type Stauts = {
+  from: {
+    id: string,
+    name: string,
+  },
   item: 'stauts',
+  post_id: string,
+  verb: 'add' | 'remove',
+  published: number,
+  created_time: number,
+  message: string,
 };
 
 type Comment = {
@@ -39,8 +48,11 @@ export default class FacebookEvent extends MessengerEvent {
     return this.isStatus && this.rawEvent.value.verb === 'remove';
   }
 
-  get status(): Stauts {
-    return this.isStatus && this.rawEvent.value;
+  get status(): ?Stauts {
+    if (this.isStatus) {
+      return this.rawEvent.value;
+    }
+    return null;
   }
 
   get isComment(): boolean {
@@ -55,7 +67,10 @@ export default class FacebookEvent extends MessengerEvent {
     return this.isComment && this.rawEvent.value.verb === 'remove';
   }
 
-  get comment(): Comment {
-    return this.isComment && this.rawEvent.value;
+  get comment(): ?Comment {
+    if (this.isComment) {
+      return this.rawEvent.value;
+    }
+    return null;
   }
 }
