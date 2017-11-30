@@ -374,9 +374,9 @@ it('#isCommentRemove', () => {
 });
 
 it('#comment', () => {
-  expect(new FacebookEvent(statusAdd).comment).toEqual(false);
-  expect(new FacebookEvent(statusEdited).comment).toEqual(false);
-  expect(new FacebookEvent(postRemove).comment).toEqual(false);
+  expect(new FacebookEvent(statusAdd).comment).toEqual(null);
+  expect(new FacebookEvent(statusEdited).comment).toEqual(null);
+  expect(new FacebookEvent(postRemove).comment).toEqual(null);
   expect(new FacebookEvent(commentAdd).comment).toEqual({
     from: {
       id: '139560936744123',
@@ -414,11 +414,11 @@ it('#comment', () => {
     item: 'comment',
     created_time: 1511948944,
   });
-  expect(new FacebookEvent(likeAdd).comment).toEqual(false);
-  expect(new FacebookEvent(likeRemove).comment).toEqual(false);
-  expect(new FacebookEvent(reactionAdd).comment).toEqual(false);
-  expect(new FacebookEvent(reactionEdit).comment).toEqual(false);
-  expect(new FacebookEvent(reactionRemove).comment).toEqual(false);
+  expect(new FacebookEvent(likeAdd).comment).toEqual(null);
+  expect(new FacebookEvent(likeRemove).comment).toEqual(null);
+  expect(new FacebookEvent(reactionAdd).comment).toEqual(null);
+  expect(new FacebookEvent(reactionEdit).comment).toEqual(null);
+  expect(new FacebookEvent(reactionRemove).comment).toEqual(null);
 });
 
 it('#isLike', () => {

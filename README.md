@@ -71,6 +71,10 @@ const server = createServer(bot);
 * `event.isCommentEdited`
 * `event.isCommentRemove`
 * `event.comment`
+* `event.isLike`
+* `event.isLikeAdd`
+* `event.isLikeRemove`
+* `event.like`
 * `event.isReaction`
 * `event.isReactionAdd`
 * `event.isReactionEdit`
