@@ -2,6 +2,10 @@
 
 > Facebook connector for [Bottender](https://github.com/Yoctol/bottender).
 
+[![npm](https://img.shields.io/npm/v/bottender-fb.svg?style=flat-square)](https://www.npmjs.com/package/bottender-fb)
+[![Build Status](https://travis-ci.org/bottenderjs/bottender-fb.svg?branch=master)](https://travis-ci.org/bottenderjs/bottender-fb)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Installation
 
 ```sh
