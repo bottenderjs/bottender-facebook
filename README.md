@@ -40,9 +40,8 @@ const bot = new Bot({
 
 bot.onEvent(async context => {
   if (context.event.isCommentAdd && context.event.comment.post_id === POST_ID) {
-    const commentId = context.event.rawEvent.value.comment_id;
-
-    await context.client.sendPrivateReply(commentId, 'OK!');
+    await context.sendPrivateReply('OK!');
+    await context.sendComment('Public comment!');
   }
 });
 

@@ -3,6 +3,7 @@
 import { MessengerConnector, MessengerContext } from 'bottender';
 import { MessengerClient } from 'messaging-api-messenger';
 
+import FacebookContext from './FacebookContext';
 import FacebookEvent from './FacebookEvent';
 
 type ConstructorOptions = {|
@@ -84,7 +85,7 @@ export default class FacebookConnector extends MessengerConnector {
   }
 
   createContext({ event, session, initialState }: Object): MessengerContext {
-    return new MessengerContext({
+    return new FacebookContext({
       client: this._client,
       event,
       session,
