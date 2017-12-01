@@ -24,7 +24,7 @@ export default class FacebookConnector extends MessengerConnector {
     client,
     mapPageToAccessToken,
   }: ConstructorOptions) {
-    const _client = client || FacebookClient.connect(accessToken);
+    const _client = client || FacebookClient.connect(accessToken || '');
     super({ accessToken, appSecret, client: _client, mapPageToAccessToken });
   }
 

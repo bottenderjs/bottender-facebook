@@ -9,6 +9,11 @@ function handleError(err) {
 }
 
 export default class FacebookClient extends MessengerClient {
+  static connect = (
+    accessToken: string,
+    version?: string = '2.11'
+  ): FacebookClient => new FacebookClient(accessToken, version);
+
   constructor(accessToken: string, version?: string = '2.11') {
     super(accessToken, version);
   }
