@@ -28,7 +28,8 @@ const { createServer } = require('bottender/express');
 const { FacebookConnector } = require('bottender-fb');
 
 // We can get `story_fbid` in URL query string
-const POST_ID = process.env.POST_ID || `${process.env.PAGE_ID}_${process.env.STORY_FBID}`;
+const POST_ID =
+  process.env.POST_ID || `${process.env.PAGE_ID}_${process.env.STORY_FBID}`;
 
 const bot = new Bot({
   connector: new FacebookConnector({
@@ -47,6 +48,38 @@ bot.onEvent(async context => {
 
 const server = createServer(bot);
 ```
+
+## API Reference
+
+### Client
+
+* `client.sendComment`
+* `client.sendPrivateReply`
+
+### Event
+
+* `event.isFeed`
+* `event.isStatus`
+* `event.isStatusAdd`
+* `event.isStatusEdited`
+* `event.status`
+* `event.isPost`
+* `event.isPostRemove`
+* `event.post`
+* `event.isComment`
+* `event.isCommentAdd`
+* `event.isCommentEdited`
+* `event.isCommentRemove`
+* `event.comment`
+* `event.isLike`
+* `event.isLikeAdd`
+* `event.isLikeRemove`
+* `event.like`
+* `event.isReaction`
+* `event.isReactionAdd`
+* `event.isReactionEdit`
+* `event.isReactionRemove`
+* `event.reaction`
 
 ## Contributing
 
