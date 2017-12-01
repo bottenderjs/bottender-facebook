@@ -59,7 +59,7 @@ const commentAdd = {
     verb: 'add',
     parent_id: '139560936744456_139562213411528',
     created_time: 1511951015,
-    message: '可以',
+    message: 'Good',
   },
 };
 
@@ -76,7 +76,7 @@ const commentEdited = {
     verb: 'edited',
     parent_id: '137542570280222_139560936744456',
     created_time: 1511948891,
-    message: '你很棒耶',
+    message: 'Great',
   },
 };
 
@@ -388,7 +388,7 @@ it('#comment', () => {
     verb: 'add',
     parent_id: '139560936744456_139562213411528',
     created_time: 1511951015,
-    message: '可以',
+    message: 'Good',
   });
   expect(new FacebookEvent(commentEdited).comment).toEqual({
     from: {
@@ -401,7 +401,7 @@ it('#comment', () => {
     verb: 'edited',
     parent_id: '137542570280222_139560936744456',
     created_time: 1511948891,
-    message: '你很棒耶',
+    message: 'Great',
   });
   expect(new FacebookEvent(commentRemove).comment).toEqual({
     from: {
