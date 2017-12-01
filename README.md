@@ -55,6 +55,11 @@ const server = createServer(bot);
 * `client.sendComment`
 * `client.sendPrivateReply`
 
+### Context
+
+* `context.sendComment`
+* `context.sendPrivateReply`
+
 ### Event
 
 * `event.isFeed`
