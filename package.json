@@ -22,8 +22,10 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
+    "axios-error": "^0.5.4",
     "bottender": "^0.14.6",
-    "messaging-api-messenger": "^0.5.12"
+    "messaging-api-messenger": "^0.5.12",
+    "warning": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
