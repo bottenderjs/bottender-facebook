@@ -1,52 +1,31 @@
 /* @flow */
 
 import { MessengerConnector, MessengerContext } from 'bottender';
-import { MessengerClient } from 'messaging-api-messenger';
+import warning from 'warning';
 
 import FacebookContext from './FacebookContext';
 import FacebookEvent from './FacebookEvent';
+import FacebookClient from './FacebookClient';
 
 type ConstructorOptions = {|
   accessToken?: string,
   appSecret?: string,
-  client?: MessengerClient,
+  client?: FacebookClient,
+  mapPageToAccessToken?: (pageId: string) => Promise<string>,
 |};
 
 export default class FacebookConnector extends MessengerConnector {
-  _client: MessengerClient;
+  _client: FacebookClient;
   _appSecret: ?string;
 
-  constructor({ accessToken, appSecret, client }: ConstructorOptions) {
-    super({ accessToken, appSecret, client });
-
-    Object.defineProperty(this._client, 'sendPrivateReply', {
-      enumerable: false,
-      configurable: true,
-      writable: true,
-      value(commentId, message) {
-        return this.axios.post(
-          `/${commentId}/private_replies?access_token=${this._accessToken}`,
-          {
-            message,
-          }
-        );
-      },
-    });
-
-    // https://developers.facebook.com/docs/graph-api/reference/v2.10/object/comments/
-    Object.defineProperty(this._client, 'sendComment', {
-      enumerable: false,
-      configurable: true,
-      writable: true,
-      value(objectId, message) {
-        return this.axios.post(
-          `/${objectId}/comments?access_token=${this._accessToken}`,
-          {
-            message,
-          }
-        );
-      },
-    });
+  constructor({
+    accessToken,
+    appSecret,
+    client,
+    mapPageToAccessToken,
+  }: ConstructorOptions) {
+    const _client = client || FacebookClient.connect(accessToken);
+    super({ accessToken, appSecret, client: _client, mapPageToAccessToken });
   }
 
   // FIXME: should not rely on private method
@@ -84,12 +63,35 @@ export default class FacebookConnector extends MessengerConnector {
     return rawEvents.map(event => new FacebookEvent(event, { isStandby }));
   }
 
-  createContext({ event, session, initialState }: Object): MessengerContext {
+  async createContext({
+    event,
+    session,
+    initialState,
+  }: Object): MessengerContext {
+    let customAccessToken;
+    if (this._mapPageToAccessToken) {
+      const { rawEvent } = event;
+
+      let pageId = null;
+
+      if (rawEvent.message && rawEvent.message.is_echo && rawEvent.sender) {
+        pageId = rawEvent.sender.id;
+      } else if (rawEvent.recipient) {
+        pageId = rawEvent.recipient.id;
+      }
+
+      if (!pageId) {
+        warning(false, 'Could not find pageId from request body.');
+      } else {
+        customAccessToken = await this._mapPageToAccessToken(pageId);
+      }
+    }
     return new FacebookContext({
       client: this._client,
       event,
       session,
       initialState,
+      customAccessToken,
     });
   }
 }
