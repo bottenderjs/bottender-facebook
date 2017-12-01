@@ -1,7 +1,7 @@
 0.3.0 / 2017-12-01
 ==================
 - [new] Export `FacebookClient`, `FacebookContext`, `FacebookEvent`
-- [new] Add multiple pages support via `pagePageToAccessPage`
+- [new] Add multiple pages support via `mapPageToAccessToken`
 
 0.2.1 / 2017-11-29
 ==================
