@@ -2,10 +2,6 @@
 import { MessengerContext } from 'bottender';
 
 export default class FacebookContext extends MessengerContext {
-  constructor({ client, event, session, initialState, customAccessToken }) {
-    super({ client, event, session, initialState, customAccessToken });
-  }
-
   // https://developers.facebook.com/docs/graph-api/reference/v2.11/object/private_replies
   async sendPrivateReply(message) {
     // TODO: https://github.com/bottenderjs/bottender-fb/issues/2
