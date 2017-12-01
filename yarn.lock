@@ -486,6 +486,12 @@ axios-error@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/axios-error/-/axios-error-0.5.4.tgz#f86af6b09df20366c65748e2f0e0b27cf993f8ba"
 
+axios-mock-adapter@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/axios-mock-adapter/-/axios-mock-adapter-1.10.0.tgz#3ccee65466439a2c7567e932798fc0377d39209d"
+  dependencies:
+    deep-equal "^1.0.1"
+
 axios@^0.17.0:
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.17.0.tgz#7da747916db803f761651d6091d708789b953c6a"
@@ -1644,7 +1650,7 @@ dedent@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
 
-deep-equal@~1.0.1:
+deep-equal@^1.0.1, deep-equal@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
 
