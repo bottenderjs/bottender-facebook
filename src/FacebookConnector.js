@@ -1,6 +1,6 @@
 /* @flow */
 
-import { MessengerConnector, MessengerContext } from 'bottender';
+import { MessengerConnector } from 'bottender';
 import warning from 'warning';
 
 import FacebookContext from './FacebookContext';
@@ -24,7 +24,7 @@ export default class FacebookConnector extends MessengerConnector {
     client,
     mapPageToAccessToken,
   }: ConstructorOptions) {
-    const _client = client || FacebookClient.connect(accessToken);
+    const _client = client || FacebookClient.connect(accessToken || '');
     super({ accessToken, appSecret, client: _client, mapPageToAccessToken });
   }
 
@@ -67,14 +67,16 @@ export default class FacebookConnector extends MessengerConnector {
     event,
     session,
     initialState,
-  }: Object): MessengerContext {
+  }: Object): FacebookContext {
     let customAccessToken;
+
     if (this._mapPageToAccessToken) {
       const { rawEvent } = event;
-
       let pageId = null;
 
-      if (rawEvent.message && rawEvent.message.is_echo && rawEvent.sender) {
+      if (event.isFeed) {
+        pageId = rawEvent.value.post_id.split('_')[0];
+      } else if (event.isEcho && rawEvent.sender) {
         pageId = rawEvent.sender.id;
       } else if (rawEvent.recipient) {
         pageId = rawEvent.recipient.id;
