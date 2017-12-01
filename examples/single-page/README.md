@@ -1,10 +1,12 @@
+# Single Page
+
 ## Install and Run
 
 Download this example or clone [bottender-fb](https://github.com/bottenderjs/bottender-fb).
 
 ```
-curl https://codeload.github.com/bottenderjs/bottender-fb/tar.gz/master | tar -xz --strip=2 bottender-fb-master/example
-cd example
+curl https://codeload.github.com/bottenderjs/bottender-fb/tar.gz/master | tar -xz --strip=2 bottender-fb-master/examples/single-page
+cd single-page
 npm install
 npm run dev
 ```
