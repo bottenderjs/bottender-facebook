@@ -67,6 +67,11 @@ type Reaction = {
 };
 
 export default class FacebookEvent extends MessengerEvent {
+  constructor(rawEvent: Object, options: Object = {}) {
+    super(rawEvent, options);
+    this._pageId = options.pageId;
+  }
+
   get isConversation(): boolean {
     return this.rawEvent.field === 'conversation';
   }
@@ -172,5 +177,13 @@ export default class FacebookEvent extends MessengerEvent {
       return this.rawEvent.value;
     }
     return null;
+  }
+
+  get pageId(): ?string {
+    return this._pageId || null;
+  }
+
+  get isSentByPage(): boolean {
+    return this.rawEvent.value.from.id === this.pageId;
   }
 }

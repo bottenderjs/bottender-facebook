@@ -223,6 +223,42 @@ describe('#mapRequestToEvents', () => {
 
     expect(events).toHaveLength(0);
   });
+
+  it('should pass pageId when the body.object is `page`', () => {
+    const { connector } = setup();
+    const commentAddRequestByPage = {
+      body: {
+        object: 'page',
+        entry: [
+          {
+            id: '<PAGE_ID>',
+            time: 1458692752478,
+            changes: [
+              {
+                field: 'feed',
+                value: {
+                  from: {
+                    id: '<PAGE_ID>',
+                    name: 'user',
+                  },
+                  item: 'comment',
+                  comment_id: '139560936744456_139620233405726',
+                  post_id: '137542570280222_139560936744456',
+                  verb: 'add',
+                  parent_id: '139560936744456_139562213411528',
+                  created_time: 1511951015,
+                  message: 'Good',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    };
+    const events = connector.mapRequestToEvents(commentAddRequestByPage.body);
+    expect(events[0].pageId).toBe('<PAGE_ID>');
+    expect(events[0].isSentByPage).toBe(true);
+  });
 });
 
 describe('#createContext', () => {
