@@ -1,7 +1,9 @@
 import FacebookContext from '../FacebookContext';
 import FacebookEvent from '../FacebookEvent';
 
-const rawEvent = {
+jest.mock('warning');
+
+const userRawEvent = {
   field: 'feed',
   value: {
     from: {
@@ -18,7 +20,24 @@ const rawEvent = {
   },
 };
 
-const setup = () => {
+const sentByPageRawEvent = {
+  field: 'feed',
+  value: {
+    from: {
+      id: '137542570280222',
+      name: 'page',
+    },
+    item: 'comment',
+    comment_id: '139560936744456_139620233405726',
+    post_id: '137542570280222_139560936744456',
+    verb: 'add',
+    parent_id: '139560936744456_139562213411528',
+    created_time: 1511951015,
+    message: 'OK',
+  },
+};
+
+const setup = ({ rawEvent, pageId } = { rawEvent: userRawEvent }) => {
   const client = {
     sendComment: jest.fn(),
     sendPrivateReply: jest.fn(),
@@ -26,7 +45,7 @@ const setup = () => {
 
   const context = new FacebookContext({
     client,
-    event: new FacebookEvent(rawEvent),
+    event: new FacebookEvent(rawEvent, { pageId }),
   });
   return {
     client,
@@ -46,6 +65,17 @@ describe('#sendComment', () => {
       { access_token: undefined }
     );
   });
+
+  it('should not reply to page itself', async () => {
+    const { context, client } = setup({
+      rawEvent: sentByPageRawEvent,
+      pageId: '137542570280222',
+    });
+
+    await context.sendComment('Public Reply!');
+
+    expect(client.sendComment).not.toBeCalled();
+  });
 });
 
 describe('#sendPrivateReply', () => {
@@ -59,5 +89,16 @@ describe('#sendPrivateReply', () => {
       'OK!',
       { access_token: undefined }
     );
+  });
+
+  it('should not reply to page itself', async () => {
+    const { context, client } = setup({
+      rawEvent: sentByPageRawEvent,
+      pageId: '137542570280222',
+    });
+
+    await context.sendPrivateReply('OK!');
+
+    expect(client.sendPrivateReply).not.toBeCalled();
   });
 });
