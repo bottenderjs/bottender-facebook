@@ -29,7 +29,7 @@ const bot = new Bot({
 });
 
 bot.onEvent(async context => {
-  if (context.event.isCommentAdd) {
+  if (context.event.isCommentAdd && !context.event.isSentByPage) {
     try {
       await context.sendPrivateReply('OK!');
       await context.sendComment('Public reply!');
