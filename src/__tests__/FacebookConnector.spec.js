@@ -3,6 +3,8 @@ import FacebookConnector from '../FacebookConnector';
 import FacebookContext from '../FacebookContext';
 import FacebookEvent from '../FacebookEvent';
 
+jest.mock('warning');
+
 const ACCESS_TOKEN = 'FAKE_TOKEN';
 const APP_SECRET = 'FAKE_SECRET';
 
