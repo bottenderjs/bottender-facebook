@@ -19,7 +19,11 @@ const bot = new Bot({
 bot.onEvent(async context => {
   console.log(context.event);
 
-  if (context.event.isCommentAdd && context.event.comment.post_id === POST_ID) {
+  if (
+    context.event.isCommentAdd &&
+    context.event.comment.post_id === POST_ID &&
+    !context.event.isSentByPage
+  ) {
     const commentId = context.event.rawEvent.value.comment_id;
 
     try {
