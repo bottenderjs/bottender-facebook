@@ -3,6 +3,12 @@
   "version": "0.3.0",
   "description": "Facebook connector for Bottender.",
   "main": "lib/index.js",
+  "keywords": [
+    "bottender",
+    "facebook",
+    "fb",
+    "connector"
+  ],
   "files": [
     "lib"
   ],
