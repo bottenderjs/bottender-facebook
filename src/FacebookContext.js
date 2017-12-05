@@ -1,12 +1,16 @@
 /* flow */
 import { MessengerContext } from 'bottender';
+import warning from 'warning';
 
 export default class FacebookContext extends MessengerContext {
   // https://developers.facebook.com/docs/graph-api/reference/v2.11/object/private_replies
   async sendPrivateReply(message) {
-    // TODO: https://github.com/bottenderjs/bottender-fb/issues/2
     const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
 
+    if (this._event.isSentByPage) {
+      warning(false, 'Could not sendPrivateReply to page itself.');
+      return;
+    }
     return this._client.sendPrivateReply(objectId, message, {
       access_token: this._customAccessToken,
     });
@@ -14,9 +18,12 @@ export default class FacebookContext extends MessengerContext {
 
   // https://developers.facebook.com/docs/graph-api/reference/v2.11/object/comments/
   async sendComment(message) {
-    // TODO: https://github.com/bottenderjs/bottender-fb/issues/2
     const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
 
+    if (this._event.isSentByPage) {
+      warning(false, 'Could not sendComment to page itself.');
+      return;
+    }
     return this._client.sendComment(objectId, message, {
       access_token: this._customAccessToken,
     });
