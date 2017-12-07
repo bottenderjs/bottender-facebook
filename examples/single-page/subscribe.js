@@ -20,7 +20,9 @@ const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
  */
 async function generatePageToken({ userToken, pageId }) {
   const { data } = await axios.get(
-    `https://graph.facebook.com/${pageId}?fields=access_token&access_token=${userToken}`
+    `https://graph.facebook.com/${pageId}?fields=access_token&access_token=${
+      userToken
+    }`
   );
   return data;
 }
