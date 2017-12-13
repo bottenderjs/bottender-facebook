@@ -14,6 +14,11 @@ npm install bottender-fb
 
 ## Requirement
 
+### Facebook App verion
+
+Using the version before `v2.10` may cause unexpected behavior.\
+We highly recommend the version after `v2.11`.
+
 ### User Permissions Required
 
 * **manage_pages** - for access token
