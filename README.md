@@ -14,10 +14,14 @@ npm install bottender-fb
 
 ## Requirement
 
-### Facebook App verion
+### Facebook App Graph API verion
 
-Using the version before `v2.10` may cause unexpected behavior.\
-We highly recommend the version after `v2.11`.
+Using the API version before `v2.10` may cause unexpected behavior.\
+We highly recommend the API version after `v2.11`.
+
+### Subscribe to essential fields
+
+You need to make sure the webhook of your page is subscribing to the `feed` field on API version after `v2.11`.
 
 ### User Permissions Required
 
@@ -51,6 +55,23 @@ bot.onEvent(async context => {
 });
 
 const server = createServer(bot);
+```
+
+### Custom Graph API version
+
+The default `Graph API` version is `v2.11` (recommended). \
+You can use other version by following this example:
+
+```js
+const { Bot } = require('bottender');
+const { FacebookConnector, FacebookClient } = require('bottender-fb');
+
+const bot = new Bot({
+  connector: new FacebookConnector({
+    appSecret: APP_SECRET,
+    client: FacebookClient.connect(ACCESS_TOKEN, '2.11'),
+  }),
+});
 ```
 
 ## API Reference
