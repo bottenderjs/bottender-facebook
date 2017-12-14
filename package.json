@@ -1,10 +1,17 @@
 {
   "name": "bottender-facebook",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Facebook connector for Bottender.",
   "main": "lib/index.js",
-  "keywords": ["bottender", "facebook", "fb", "connector"],
-  "files": ["lib"],
+  "keywords": [
+    "bottender",
+    "facebook",
+    "fb",
+    "connector"
+  ],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "npm run clean && babel src -d lib --ignore __tests__",
     "clean": "rimraf lib",
@@ -47,6 +54,9 @@
     "rimraf": "^2.6.2"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
