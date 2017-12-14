@@ -1,6 +1,6 @@
 const { Bot } = require('bottender');
 const { createServer } = require('bottender/koa');
-const { FacebookConnector } = require('bottender-fb');
+const { FacebookConnector } = require('bottender-facebook');
 
 const PAGE_1_PAGE_ID = process.env.PAGE_1_PAGE_ID;
 const PAGE_1_ACCESS_TOKEN = process.env.PAGE_1_ACCESS_TOKEN;

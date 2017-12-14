@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "bottender": "latest",
-    "bottender-fb": "latest",
+    "bottender-facebook": "latest",
     "dotenv": "^4.0.0"
   }
 }
