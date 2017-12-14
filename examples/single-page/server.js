@@ -1,6 +1,6 @@
 const { Bot } = require('bottender');
 const { createServer } = require('bottender/koa');
-const { FacebookConnector } = require('bottender-fb');
+const { FacebookConnector } = require('bottender-facebook');
 
 require('dotenv').config();
 

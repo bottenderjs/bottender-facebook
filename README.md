@@ -1,7 +1,7 @@
-# Bottender FB
+# Bottender Facebook
 
-[![npm](https://img.shields.io/npm/v/bottender-fb.svg?style=flat-square)](https://www.npmjs.com/package/bottender-fb)
-[![Build Status](https://travis-ci.org/bottenderjs/bottender-fb.svg?branch=master)](https://travis-ci.org/bottenderjs/bottender-fb)
+[![npm](https://img.shields.io/npm/v/bottender-facebook.svg?style=flat-square)](https://www.npmjs.com/package/bottender-facebook)
+[![Build Status](https://travis-ci.org/bottenderjs/bottender-facebook.svg?branch=master)](https://travis-ci.org/bottenderjs/bottender-facebook)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > Facebook connector for [Bottender](https://github.com/Yoctol/bottender).
@@ -9,7 +9,7 @@
 ## Installation
 
 ```sh
-npm install bottender-fb
+npm install bottender-facebook
 ```
 
 ## Requirement
@@ -25,7 +25,7 @@ npm install bottender-fb
 ```js
 const { Bot } = require('bottender');
 const { createServer } = require('bottender/express');
-const { FacebookConnector } = require('bottender-fb');
+const { FacebookConnector } = require('bottender-facebook');
 
 // We can get `story_fbid` in URL query string
 const POST_ID =
@@ -93,13 +93,13 @@ submit your pull requests:
 Fork, then clone the repo:
 
 ```sh
-git clone git@github.com:your-username/bottender-fb.git
+git clone git@github.com:your-username/bottender-facebook.git
 ```
 
 Install the dependencies:
 
 ```sh
-cd bottender-fb
+cd bottender-facebook
 yarn
 ```
 
@@ -113,4 +113,4 @@ Make your changes and tests, and make sure the tests pass.
 
 ## License
 
-MIT © [Yoctol](https://github.com/bottenderjs/bottender-fb)
+MIT © [Yoctol](https://github.com/bottenderjs/bottender-facebook)
