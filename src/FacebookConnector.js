@@ -2,6 +2,7 @@
 
 import { MessengerConnector } from 'bottender';
 import warning from 'warning';
+import invariant from 'invariant';
 
 import FacebookContext from './FacebookContext';
 import FacebookEvent from './FacebookEvent';
@@ -81,6 +82,14 @@ export default class FacebookConnector extends MessengerConnector {
       let pageId = null;
 
       if (event.isFeed) {
+        invariant(
+          rawEvent.value.post_id,
+          `Could not find post_id in this event:\n${JSON.stringify(
+            rawEvent,
+            null,
+            2
+          )}`
+        );
         pageId = rawEvent.value.post_id.split('_')[0];
       } else if (event.isEcho && rawEvent.sender) {
         pageId = rawEvent.sender.id;
