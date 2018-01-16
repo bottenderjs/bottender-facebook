@@ -25,7 +25,7 @@ You need to make sure the webhook of your page is subscribing to the `feed` fiel
 
 ### User Permissions Required
 
-* **manage_pages** - for access token
+* **manage_pages**
 * **publish_pages** - for public replies
 * **read_page_mailboxes** - for private replies
 
