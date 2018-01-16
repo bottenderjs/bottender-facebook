@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "axios-error": "^0.5.4",
-    "bottender": "^0.14.15",
+    "bottender": "^0.14.16",
     "invariant": "^2.2.2",
     "messaging-api-messenger": "^0.6.9",
     "warning": "^3.0.0"

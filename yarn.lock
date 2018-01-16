@@ -1150,9 +1150,9 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bottender@^0.14.15:
-  version "0.14.15"
-  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.14.15.tgz#5b6196904e58048dfdbdb6560cd94f2046f2f036"
+bottender@^0.14.16:
+  version "0.14.16"
+  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.14.16.tgz#1e722f37f9207c20114878173ee32e192b9e50a5"
   dependencies:
     axios "^0.17.1"
     body-parser "^1.18.2"
