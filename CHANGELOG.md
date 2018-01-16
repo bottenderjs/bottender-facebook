@@ -1,3 +1,15 @@
+# 0.3.3 / 2018-01-16
+
+* [new] Throw error when not get postId (#26)
+* [new] Bump deps
+
+```
+bottender: ^0.14.16
+messaging-api-messenger: ^0.6.9
+```
+
+* [changed] Remove breaking flowconfig change (#27)
+
 # 0.3.2 / 2017-12-14
 
 * [new] Rename package to `bottender-facebook`
