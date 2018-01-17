@@ -288,11 +288,7 @@ describe('#createContext', () => {
     const mapPageToAccessToken = jest.fn(() => Promise.resolve('anyToken'));
     const { connector } = setup({ mapPageToAccessToken });
     const event = {
-      rawEvent: {
-        recipient: {
-          id: 'anyPageId',
-        },
-      },
+      pageId: 'anyPageId',
     };
     const session = {};
 
