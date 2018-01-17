@@ -2,7 +2,6 @@
 
 import { MessengerConnector } from 'bottender';
 import warning from 'warning';
-import invariant from 'invariant';
 
 import FacebookContext from './FacebookContext';
 import FacebookEvent from './FacebookEvent';
@@ -29,35 +28,6 @@ export default class FacebookConnector extends MessengerConnector {
     super({ accessToken, appSecret, client: _client, mapPageToAccessToken });
   }
 
-  // FIXME: should not rely on private method
-  _getRawEventsFromRequest(body: Object) {
-    if (body.entry) {
-      const { entry } = body;
-
-      return entry
-        .map(ent => {
-          if (ent.messaging) {
-            return ent.messaging[0];
-          }
-
-          if (ent.standby) {
-            return ent.standby[0];
-          }
-
-          // Patch For Facebook Start
-          if (ent.changes) {
-            return ent.changes[0];
-          }
-          // Patch For Facebook End
-
-          return null;
-        })
-        .filter(event => event != null);
-    }
-
-    return [body];
-  }
-
   mapRequestToEvents(body: Object) {
     const rawEvents = this._getRawEventsFromRequest(body);
     const isStandby = this._isStandby(body);
@@ -78,24 +48,7 @@ export default class FacebookConnector extends MessengerConnector {
     let customAccessToken;
 
     if (this._mapPageToAccessToken) {
-      const { rawEvent } = event;
-      let pageId = null;
-
-      if (event.isFeed) {
-        invariant(
-          rawEvent.value.post_id,
-          `Could not find post_id in this event:\n${JSON.stringify(
-            rawEvent,
-            null,
-            2
-          )}`
-        );
-        pageId = rawEvent.value.post_id.split('_')[0];
-      } else if (event.isEcho && rawEvent.sender) {
-        pageId = rawEvent.sender.id;
-      } else if (rawEvent.recipient) {
-        pageId = rawEvent.recipient.id;
-      }
+      const { pageId } = event;
 
       if (!pageId) {
         warning(false, 'Could not find pageId from request body.');
