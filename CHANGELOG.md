@@ -1,3 +1,7 @@
+# 0.3.4 / 2018-01-17
+
+* [changed] Use event `pageId` getter and remove `_getRawEventsFromRequest` (#30)
+
 # 0.3.3 / 2018-01-16
 
 * [new] Throw error when not get postId (#26)
