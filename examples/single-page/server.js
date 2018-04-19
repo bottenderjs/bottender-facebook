@@ -24,11 +24,9 @@ bot.onEvent(async context => {
     context.event.comment.post_id === POST_ID &&
     !context.event.isSentByPage
   ) {
-    const commentId = context.event.rawEvent.value.comment_id;
-
     try {
-      await context.client.sendPrivateReply(commentId, 'OK!');
-      await context.client.sendComment(commentId, 'Public Reply!');
+      await context.sendPrivateReply('OK!');
+      await context.sendComment('Public Reply!');
     } catch (err) {
       console.log(err.response.data);
     }
