@@ -27,8 +27,8 @@ bot.onEvent(async context => {
     const commentId = context.event.rawEvent.value.comment_id;
 
     try {
-      await context.client.sendPrivateReply(commentId, 'OK!');
-      await context.client.sendComment(commentId, 'Public Reply!');
+      await context.sendPrivateReply('OK!');
+      await context.sendComment('Public Reply!');
     } catch (err) {
       console.log(err.response.data);
     }
