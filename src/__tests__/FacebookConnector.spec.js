@@ -7,6 +7,7 @@ jest.mock('warning');
 
 const ACCESS_TOKEN = 'FAKE_TOKEN';
 const APP_SECRET = 'FAKE_SECRET';
+const VERIFY_TOKEN = 'VERIFY_TOKEN';
 
 const request = {
   body: {
@@ -141,10 +142,11 @@ const commentAddRequest = {
 };
 
 function setup(
-  { accessToken, appSecret, mapPageToAccessToken } = {
+  { accessToken, appSecret, mapPageToAccessToken, verifyToken } = {
     accessToken: ACCESS_TOKEN,
     appSecret: APP_SECRET,
     mapPageToAccessToken: jest.fn(),
+    verifyToken: VERIFY_TOKEN,
   }
 ) {
   const mockGraphAPIClient = {
@@ -158,6 +160,7 @@ function setup(
       accessToken,
       appSecret,
       mapPageToAccessToken,
+      verifyToken,
     }),
   };
 }
