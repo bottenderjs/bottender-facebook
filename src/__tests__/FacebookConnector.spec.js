@@ -172,6 +172,7 @@ describe('#mapRequestToEvents', () => {
 
     expect(events).toHaveLength(1);
     expect(events[0]).toBeInstanceOf(FacebookEvent);
+    expect(events[0].pageId).toBe('1895382890692545');
   });
 
   it('should work with batch entry', () => {
@@ -180,7 +181,9 @@ describe('#mapRequestToEvents', () => {
 
     expect(events).toHaveLength(2);
     expect(events[0]).toBeInstanceOf(FacebookEvent);
+    expect(events[0].pageId).toBe('1895382890692545');
     expect(events[1]).toBeInstanceOf(FacebookEvent);
+    expect(events[0].pageId).toBe('1895382890692545');
   });
 
   it('should map request to standby FacebookEvents', () => {
@@ -189,6 +192,7 @@ describe('#mapRequestToEvents', () => {
 
     expect(events).toHaveLength(1);
     expect(events[0]).toBeInstanceOf(FacebookEvent);
+    expect(events[0].pageId).toBe('<PAGE_ID>');
     expect(events[0].isStandby).toBe(true);
   });
 
@@ -198,6 +202,7 @@ describe('#mapRequestToEvents', () => {
 
     expect(events).toHaveLength(1);
     expect(events[0]).toBeInstanceOf(FacebookEvent);
+    expect(events[0].pageId).toBe('<PAGE_ID>');
     expect(events[0].isStandby).toBe(false);
   });
 
