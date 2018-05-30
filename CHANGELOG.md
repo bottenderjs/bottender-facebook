@@ -1,3 +1,14 @@
+# 0.4.0-beta / 2018-05-30
+
+* [new] Bump deps
+
+```
+bottender: ^0.15.0-beta.10
+messaging-api-messenger: ^0.7.1
+```
+
+* [changed] Add verify token to connector (#38)
+
 # 0.3.4 / 2018-01-17
 
 * [changed] Use event `pageId` getter and remove `_getRawEventsFromRequest` (#30)
