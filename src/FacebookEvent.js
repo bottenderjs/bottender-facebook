@@ -184,6 +184,10 @@ export default class FacebookEvent extends MessengerEvent {
   }
 
   get isSentByPage(): boolean {
+    // TODO: should we treat Messenger echo events as `isSentByPage`?
+    if (!this.isFeed) {
+      return false;
+    }
     return this.rawEvent.value.from.id === this.pageId;
   }
 }
