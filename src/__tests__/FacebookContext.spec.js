@@ -118,6 +118,36 @@ describe('#getComment', () => {
   });
 });
 
+describe('#canReplyPrivately', () => {
+  it('should be false when is not commet', async () => {
+    const { context, client } = setup();
+
+    client.getComment.mockResolvedValue(null);
+
+    expect(await context.canReplyPrivately()).toBe(false);
+  });
+
+  it('should be true when can_reply_privately: true', async () => {
+    const { context, client } = setup();
+
+    client.getComment.mockResolvedValue({
+      can_reply_privately: true,
+    });
+
+    expect(await context.canReplyPrivately()).toBe(true);
+  });
+
+  it('should be false when can_reply_privately: false', async () => {
+    const { context, client } = setup();
+
+    client.getComment.mockResolvedValue({
+      can_reply_privately: false,
+    });
+
+    expect(await context.canReplyPrivately()).toBe(false);
+  });
+});
+
 describe('#getLikes', () => {
   it('should call client with comment id', async () => {
     const { context, client } = setup();

@@ -96,6 +96,7 @@ const bot = new Bot({
 - `context.sendPrivateReply`
 - `context.getComment`
 - `context.getLikes`
+- `context.canReplyPrivately`
 
 ### Event
 
