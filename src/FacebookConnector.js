@@ -1,11 +1,11 @@
 /* @flow */
 
-import { MessengerConnector } from 'bottender';
 import warning from 'warning';
+import { MessengerConnector } from 'bottender';
 
+import FacebookClient from './FacebookClient';
 import FacebookContext from './FacebookContext';
 import FacebookEvent from './FacebookEvent';
-import FacebookClient from './FacebookClient';
 
 type ConstructorOptions = {|
   accessToken?: string,
@@ -17,6 +17,7 @@ type ConstructorOptions = {|
 
 export default class FacebookConnector extends MessengerConnector {
   _client: FacebookClient;
+
   _appSecret: ?string;
 
   constructor({

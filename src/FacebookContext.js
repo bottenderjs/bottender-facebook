@@ -1,6 +1,6 @@
 /* flow */
-import { MessengerContext } from 'bottender';
 import warning from 'warning';
+import { MessengerContext } from 'bottender';
 
 export default class FacebookContext extends MessengerContext {
   // https://developers.facebook.com/docs/graph-api/reference/v2.11/object/private_replies
