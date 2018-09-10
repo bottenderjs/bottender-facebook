@@ -42,6 +42,7 @@ const setup = ({ rawEvent, pageId } = { rawEvent: userRawEvent }) => {
     sendComment: jest.fn(),
     sendPrivateReply: jest.fn(),
     getComment: jest.fn(),
+    getLikes: jest.fn(),
   };
 
   const context = new FacebookContext({
@@ -114,5 +115,28 @@ describe('#getComment', () => {
       '139560936744456_139620233405726',
       { access_token: undefined }
     );
+  });
+});
+
+describe('#getLikes', () => {
+  it('should call client with comment id', async () => {
+    const { context, client } = setup();
+
+    await context.getLikes();
+
+    expect(client.getLikes).toBeCalledWith('139560936744456_139620233405726', {
+      access_token: undefined,
+    });
+  });
+
+  it('should call client with summary: true', async () => {
+    const { context, client } = setup();
+
+    await context.getLikes({ summary: true });
+
+    expect(client.getLikes).toBeCalledWith('139560936744456_139620233405726', {
+      summary: true,
+      access_token: undefined,
+    });
   });
 });

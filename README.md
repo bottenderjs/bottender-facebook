@@ -88,12 +88,14 @@ const bot = new Bot({
 - `client.sendComment`
 - `client.sendPrivateReply`
 - `client.getComment`
+- `client.getLikes`
 
 ### Context
 
 - `context.sendComment`
 - `context.sendPrivateReply`
 - `context.getComment`
+- `context.getLikes`
 
 ### Event
 
