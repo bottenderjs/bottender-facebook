@@ -130,6 +130,14 @@ export default class FacebookEvent extends MessengerEvent {
     return this.isComment && this.rawEvent.value.verb === 'remove';
   }
 
+  get isFirstLayerComment(): boolean {
+    if (!this.isComment) return false;
+
+    const comment = ((this.comment: any): Comment);
+
+    return comment.parent_id === comment.post_id;
+  }
+
   get comment(): ?Comment {
     if (this.isComment) {
       return this.rawEvent.value;

@@ -427,6 +427,22 @@ it('#isCommentRemove', () => {
   expect(new FacebookEvent(sentByPage).isCommentRemove).toEqual(false);
 });
 
+it('#isFirstLayerComment', () => {
+  expect(new FacebookEvent(textMessage).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(statusAdd).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(statusEdited).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(postRemove).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(commentAdd).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(commentEdited).isFirstLayerComment).toEqual(true);
+  expect(new FacebookEvent(commentRemove).isFirstLayerComment).toEqual(true);
+  expect(new FacebookEvent(likeAdd).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(likeRemove).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(reactionAdd).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(reactionEdit).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(reactionRemove).isFirstLayerComment).toEqual(false);
+  expect(new FacebookEvent(sentByPage).isFirstLayerComment).toEqual(false);
+});
+
 it('#comment', () => {
   expect(new FacebookEvent(textMessage).comment).toEqual(null);
   expect(new FacebookEvent(statusAdd).comment).toEqual(null);
