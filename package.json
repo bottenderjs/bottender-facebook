@@ -1,6 +1,6 @@
 {
   "name": "bottender-facebook",
-  "version": "0.4.0-beta",
+  "version": "0.4.0",
   "description": "Facebook connector for Bottender.",
   "main": "lib/index.js",
   "keywords": [
