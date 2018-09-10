@@ -1,6 +1,6 @@
 /* @flow */
-import { MessengerClient } from 'messaging-api-messenger';
 import AxiosError from 'axios-error';
+import { MessengerClient } from 'messaging-api-messenger';
 
 function handleError(err) {
   const { error } = err.response.data;

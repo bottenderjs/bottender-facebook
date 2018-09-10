@@ -3,7 +3,7 @@ import {
   FacebookConnector,
   FacebookContext,
   FacebookEvent,
-} from '../';
+} from '..';
 
 it('should export public api', () => {
   expect(FacebookClient).toBeDefined();
