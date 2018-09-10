@@ -1,45 +1,54 @@
+# 0.4.0 / 2018-09-10
+
+- [new] Bump deps
+
+```
+bottender: ^0.15.6
+messaging-api-messenger: ^0.7.6
+```
+
 # 0.4.0-beta / 2018-05-30
 
-* [new] Bump deps
+- [new] Bump deps
 
 ```
 bottender: ^0.15.0-beta.10
 messaging-api-messenger: ^0.7.1
 ```
 
-* [changed] Add verify token to connector (#38)
+- [changed] Add verify token to connector (#38)
 
 # 0.3.4 / 2018-01-17
 
-* [changed] Use event `pageId` getter and remove `_getRawEventsFromRequest` (#30)
+- [changed] Use event `pageId` getter and remove `_getRawEventsFromRequest` (#30)
 
 # 0.3.3 / 2018-01-16
 
-* [new] Throw error when not get postId (#26)
-* [new] Bump deps
+- [new] Throw error when not get postId (#26)
+- [new] Bump deps
 
 ```
 bottender: ^0.14.16
 messaging-api-messenger: ^0.6.9
 ```
 
-* [changed] Remove breaking flowconfig change (#27)
+- [changed] Remove breaking flowconfig change (#27)
 
 # 0.3.2 / 2017-12-14
 
-* [new] Rename package to `bottender-facebook`
-* [fix] Use get page fields=access_token to retrieve access_token (#20)
+- [new] Rename package to `bottender-facebook`
+- [fix] Use get page fields=access_token to retrieve access_token (#20)
 
 # 0.3.1 / 2017-12-05
 
-* [new] Add `event.isSentByPage`
-* [fix] Prevent from calling `sendPrivateReply`, `sendComment` to page itself
+- [new] Add `event.isSentByPage`
+- [fix] Prevent from calling `sendPrivateReply`, `sendComment` to page itself
 
 # 0.3.0 / 2017-12-01
 
-* [new] Export `FacebookClient`, `FacebookContext`, `FacebookEvent`
-* [new] Add multiple pages support via `mapPageToAccessToken`
+- [new] Export `FacebookClient`, `FacebookContext`, `FacebookEvent`
+- [new] Add multiple pages support via `mapPageToAccessToken`
 
 # 0.2.1 / 2017-11-29
 
-* [fix] Fixed some bugs to support Bottender 0.14
+- [fix] Fixed some bugs to support Bottender 0.14
