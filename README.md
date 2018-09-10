@@ -109,6 +109,7 @@ const bot = new Bot({
 - `event.isCommentAdd`
 - `event.isCommentEdited`
 - `event.isCommentRemove`
+- `event.isFirstLayerComment`
 - `event.comment`
 - `event.isLike`
 - `event.isLikeAdd`
