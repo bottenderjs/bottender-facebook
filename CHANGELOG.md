@@ -1,3 +1,18 @@
+# 0.4.1 / 2018-09-10
+
+- [new] add new getter and api methods:
+
+```js
+event.isFirstLayerComment;
+
+client.getComment(commentId);
+client.getLikes(objectId);
+
+context.getComment();
+context.getLikes();
+await context.canReplyPrivately;
+```
+
 # 0.4.0 / 2018-09-10
 
 - [new] Bump deps
