@@ -3,6 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import FacebookClient from '../FacebookClient';
 
 const OBJECT_ID = '123456';
+const COMMENT_ID = '123456';
 const ACCESS_TOKEN = '1234567890';
 const ANOTHER_TOKEN = '0987654321';
 
@@ -88,6 +89,38 @@ describe('send api', () => {
         .reply(200, reply);
 
       const res = await client.sendComment(OBJECT_ID, 'Hello!', {
+        access_token: ANOTHER_TOKEN,
+      });
+
+      expect(res).toEqual(reply);
+    });
+  });
+
+  describe('#getComment', () => {
+    it('should call comments api', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onGet(`/${COMMENT_ID}?access_token=${ACCESS_TOKEN}`)
+        .reply(200, reply);
+
+      const res = await client.getComment(COMMENT_ID);
+
+      expect(res).toEqual(reply);
+    });
+
+    it('support custom token', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onGet(`/${COMMENT_ID}?access_token=${ANOTHER_TOKEN}`)
+        .reply(200, reply);
+
+      const res = await client.getComment(COMMENT_ID, {
         access_token: ANOTHER_TOKEN,
       });
 

@@ -41,6 +41,7 @@ const setup = ({ rawEvent, pageId } = { rawEvent: userRawEvent }) => {
   const client = {
     sendComment: jest.fn(),
     sendPrivateReply: jest.fn(),
+    getComment: jest.fn(),
   };
 
   const context = new FacebookContext({
@@ -100,5 +101,18 @@ describe('#sendPrivateReply', () => {
     await context.sendPrivateReply('OK!');
 
     expect(client.sendPrivateReply).not.toBeCalled();
+  });
+});
+
+describe('#getComment', () => {
+  it('should call client with comment id', async () => {
+    const { context, client } = setup();
+
+    await context.getComment();
+
+    expect(client.getComment).toBeCalledWith(
+      '139560936744456_139620233405726',
+      { access_token: undefined }
+    );
   });
 });
