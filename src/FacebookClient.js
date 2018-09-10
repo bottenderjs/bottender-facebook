@@ -57,4 +57,19 @@ export default class FacebookClient extends MessengerClient {
         `/${commentId}?access_token=${customAccessToken || this._accessToken}`
       )
       .then(res => res.data, handleError);
+
+  getLikes = (
+    objectId: string,
+    {
+      summary,
+      access_token: customAccessToken,
+    }: { summary?: boolean, access_token?: string } = {}
+  ): Promise<any> =>
+    this._axios
+      .get(
+        `/${objectId}/likes?${
+          summary ? 'summary=true&' : ''
+        }access_token=${customAccessToken || this._accessToken}`
+      )
+      .then(res => res.data, handleError);
 }

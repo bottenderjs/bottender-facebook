@@ -42,4 +42,14 @@ export default class FacebookContext extends MessengerContext {
       access_token: this._customAccessToken,
     });
   }
+
+  // https://developers.facebook.com/docs/graph-api/reference/v2.12/object/likes
+  getLikes(options) {
+    const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
+
+    return this._client.getLikes(objectId, {
+      access_token: this._customAccessToken,
+      ...options,
+    });
+  }
 }
