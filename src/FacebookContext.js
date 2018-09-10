@@ -52,4 +52,12 @@ export default class FacebookContext extends MessengerContext {
       ...options,
     });
   }
+
+  async canReplyPrivately() {
+    const comment = await this.getComment();
+
+    if (!comment) return false;
+
+    return comment.can_reply_privately;
+  }
 }
