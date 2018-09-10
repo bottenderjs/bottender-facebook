@@ -25,9 +25,9 @@ You need to make sure the webhook of your page is subscribing to the `feed` fiel
 
 ### User Permissions Required
 
-* **manage_pages**
-* **publish_pages** - for public replies
-* **read_page_mailboxes** - for private replies
+- **manage_pages**
+- **publish_pages** - for public replies
+- **read_page_mailboxes** - for private replies
 
 ## Example
 
@@ -48,7 +48,11 @@ const bot = new Bot({
 });
 
 bot.onEvent(async context => {
-  if (context.event.isCommentAdd && context.event.comment.post_id === POST_ID && context.event.comment.parent_id === POST_ID) {
+  if (
+    context.event.isCommentAdd &&
+    context.event.comment.post_id === POST_ID &&
+    context.event.comment.parent_id === POST_ID
+  ) {
     await context.sendPrivateReply('OK!');
     await context.sendComment('Public comment!');
   }
@@ -69,7 +73,10 @@ const { FacebookConnector, FacebookClient } = require('bottender-fb');
 const bot = new Bot({
   connector: new FacebookConnector({
     appSecret: APP_SECRET,
-    client: FacebookClient.connect(ACCESS_TOKEN, '2.11'),
+    client: FacebookClient.connect(
+      ACCESS_TOKEN,
+      '2.11'
+    ),
   }),
 });
 ```
@@ -78,38 +85,40 @@ const bot = new Bot({
 
 ### Client
 
-* `client.sendComment`
-* `client.sendPrivateReply`
+- `client.sendComment`
+- `client.sendPrivateReply`
+- `client.getComment`
 
 ### Context
 
-* `context.sendComment`
-* `context.sendPrivateReply`
+- `context.sendComment`
+- `context.sendPrivateReply`
+- `context.getComment`
 
 ### Event
 
-* `event.isFeed`
-* `event.isStatus`
-* `event.isStatusAdd`
-* `event.isStatusEdited`
-* `event.status`
-* `event.isPost`
-* `event.isPostRemove`
-* `event.post`
-* `event.isComment`
-* `event.isCommentAdd`
-* `event.isCommentEdited`
-* `event.isCommentRemove`
-* `event.comment`
-* `event.isLike`
-* `event.isLikeAdd`
-* `event.isLikeRemove`
-* `event.like`
-* `event.isReaction`
-* `event.isReactionAdd`
-* `event.isReactionEdit`
-* `event.isReactionRemove`
-* `event.reaction`
+- `event.isFeed`
+- `event.isStatus`
+- `event.isStatusAdd`
+- `event.isStatusEdited`
+- `event.status`
+- `event.isPost`
+- `event.isPostRemove`
+- `event.post`
+- `event.isComment`
+- `event.isCommentAdd`
+- `event.isCommentEdited`
+- `event.isCommentRemove`
+- `event.comment`
+- `event.isLike`
+- `event.isLikeAdd`
+- `event.isLikeRemove`
+- `event.like`
+- `event.isReaction`
+- `event.isReactionAdd`
+- `event.isReactionEdit`
+- `event.isReactionRemove`
+- `event.reaction`
 
 ## Contributing
 

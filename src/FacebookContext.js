@@ -3,8 +3,8 @@ import warning from 'warning';
 import { MessengerContext } from 'bottender';
 
 export default class FacebookContext extends MessengerContext {
-  // https://developers.facebook.com/docs/graph-api/reference/v2.11/object/private_replies
-  async sendPrivateReply(message) {
+  // https://developers.facebook.com/docs/graph-api/reference/v3.1/object/private_replies
+  sendPrivateReply(message) {
     const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
 
     if (this._event.isSentByPage) {
@@ -16,8 +16,8 @@ export default class FacebookContext extends MessengerContext {
     });
   }
 
-  // https://developers.facebook.com/docs/graph-api/reference/v2.11/object/comments/
-  async sendComment(message) {
+  // https://developers.facebook.com/docs/graph-api/reference/v3.1/object/comments/
+  sendComment(message) {
     const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
 
     if (this._event.isSentByPage) {
@@ -25,6 +25,20 @@ export default class FacebookContext extends MessengerContext {
       return;
     }
     return this._client.sendComment(objectId, message, {
+      access_token: this._customAccessToken,
+    });
+  }
+
+  // https://developers.facebook.com/docs/graph-api/reference/v3.1/comment
+  getComment() {
+    const commentId = this._event.rawEvent.value.comment_id;
+
+    if (!commentId) {
+      warning(false, 'Could not getComment if there is no comment.');
+      return;
+    }
+
+    return this._client.getComment(commentId, {
       access_token: this._customAccessToken,
     });
   }

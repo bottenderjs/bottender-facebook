@@ -47,4 +47,14 @@ export default class FacebookClient extends MessengerClient {
         }
       )
       .then(res => res.data, handleError);
+
+  getComment = (
+    commentId: string,
+    { access_token: customAccessToken }: { access_token?: string } = {}
+  ): Promise<any> =>
+    this._axios
+      .get(
+        `/${commentId}?access_token=${customAccessToken || this._accessToken}`
+      )
+      .then(res => res.data, handleError);
 }
