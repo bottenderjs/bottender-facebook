@@ -87,6 +87,7 @@ const bot = new Bot({
 
 - `client.sendComment`
 - `client.sendPrivateReply`
+- `client.sendLike`
 - `client.getComment`
 - `client.getLikes`
 
@@ -94,6 +95,7 @@ const bot = new Bot({
 
 - `context.sendComment`
 - `context.sendPrivateReply`
+- `context.sendLike`
 - `context.getComment`
 - `context.getLikes`
 - `context.canReplyPrivately`

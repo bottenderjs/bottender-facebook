@@ -29,6 +29,15 @@ export default class FacebookContext extends MessengerContext {
     });
   }
 
+  // https://developers.facebook.com/docs/graph-api/reference/v3.1/object/likes
+  sendLike() {
+    const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
+
+    return this._client.sendLike(objectId, {
+      access_token: this._customAccessToken,
+    });
+  }
+
   // https://developers.facebook.com/docs/graph-api/reference/v3.1/comment
   getComment() {
     const commentId = this._event.rawEvent.value.comment_id;

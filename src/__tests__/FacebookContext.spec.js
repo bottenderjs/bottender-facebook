@@ -41,6 +41,7 @@ const setup = ({ rawEvent, pageId } = { rawEvent: userRawEvent }) => {
   const client = {
     sendComment: jest.fn(),
     sendPrivateReply: jest.fn(),
+    sendLike: jest.fn(),
     getComment: jest.fn(),
     getLikes: jest.fn(),
   };
@@ -102,6 +103,18 @@ describe('#sendPrivateReply', () => {
     await context.sendPrivateReply('OK!');
 
     expect(client.sendPrivateReply).not.toBeCalled();
+  });
+});
+
+describe('#sendLike', () => {
+  it('should call client with comment id', async () => {
+    const { context, client } = setup();
+
+    await context.sendLike();
+
+    expect(client.sendLike).toBeCalledWith('139560936744456_139620233405726', {
+      access_token: undefined,
+    });
   });
 });
 
