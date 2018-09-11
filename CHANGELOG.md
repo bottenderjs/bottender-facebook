@@ -1,3 +1,16 @@
+# 0.4.2 / 2018-09-11
+
+- [new] add fields support to `getComment` #47
+- [new] implement `client.sendLike`, `context.sendLike` #46
+
+```js
+client.sendLike();
+context.sendLike();
+```
+
+- [fix] context.canReplyPrivately
+- [fix] send comment to correct layer of comments
+
 # 0.4.1 / 2018-09-10
 
 - [new] add new getter and api methods:
