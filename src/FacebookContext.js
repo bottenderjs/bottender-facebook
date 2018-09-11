@@ -18,7 +18,9 @@ export default class FacebookContext extends MessengerContext {
 
   // https://developers.facebook.com/docs/graph-api/reference/v3.1/object/comments/
   sendComment(message) {
-    const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
+    const objectId = this._event.isFirstLayerComment
+      ? this._event.rawEvent.value.comment_id
+      : this._event.rawEvent.value.parent_id; // FIXME: postId
 
     if (this._event.isSentByPage) {
       warning(false, 'Could not sendComment to page itself.');
