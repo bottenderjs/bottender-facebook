@@ -96,6 +96,38 @@ describe('send api', () => {
     });
   });
 
+  describe('#sendLike', () => {
+    it('should call likes api', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onPost(`/${OBJECT_ID}/likes?access_token=${ACCESS_TOKEN}`)
+        .reply(200, reply);
+
+      const res = await client.sendLike(OBJECT_ID);
+
+      expect(res).toEqual(reply);
+    });
+
+    it('support custom token', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onPost(`/${OBJECT_ID}/likes?access_token=${ANOTHER_TOKEN}`)
+        .reply(200, reply);
+
+      const res = await client.sendLike(OBJECT_ID, {
+        access_token: ANOTHER_TOKEN,
+      });
+
+      expect(res).toEqual(reply);
+    });
+  });
+
   describe('#getComment', () => {
     it('should call comments api', async () => {
       const { client, mock } = createMock();
