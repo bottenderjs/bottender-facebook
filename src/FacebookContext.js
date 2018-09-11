@@ -41,7 +41,7 @@ export default class FacebookContext extends MessengerContext {
   }
 
   // https://developers.facebook.com/docs/graph-api/reference/v3.1/comment
-  getComment() {
+  getComment(options) {
     const commentId = this._event.rawEvent.value.comment_id;
 
     if (!commentId) {
@@ -51,6 +51,7 @@ export default class FacebookContext extends MessengerContext {
 
     return this._client.getComment(commentId, {
       access_token: this._customAccessToken,
+      ...options,
     });
   }
 
@@ -65,7 +66,7 @@ export default class FacebookContext extends MessengerContext {
   }
 
   async canReplyPrivately() {
-    const comment = await this.getComment();
+    const comment = await this.getComment({ fields: ['can_reply_privately'] });
 
     if (!comment) return false;
 

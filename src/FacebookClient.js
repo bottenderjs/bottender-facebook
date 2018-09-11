@@ -61,13 +61,21 @@ export default class FacebookClient extends MessengerClient {
 
   getComment = (
     commentId: string,
-    { access_token: customAccessToken }: { access_token?: string } = {}
-  ): Promise<any> =>
-    this._axios
+    {
+      fields,
+      access_token: customAccessToken,
+    }: { fields?: ?(Array<string> | string), access_token?: string } = {}
+  ): Promise<any> => {
+    const conjunctFields = Array.isArray(fields) ? fields.join(',') : fields;
+    const fieldsQuery = conjunctFields ? `fields=${conjunctFields}&` : '';
+
+    return this._axios
       .get(
-        `/${commentId}?access_token=${customAccessToken || this._accessToken}`
+        `/${commentId}?${fieldsQuery}access_token=${customAccessToken ||
+          this._accessToken}`
       )
       .then(res => res.data, handleError);
+  };
 
   getLikes = (
     objectId: string,
