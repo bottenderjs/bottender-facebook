@@ -116,6 +116,17 @@ describe('#getComment', () => {
       { access_token: undefined }
     );
   });
+
+  it('should call client with fields', async () => {
+    const { context, client } = setup();
+
+    await context.getComment({ fields: ['message_tags'] });
+
+    expect(client.getComment).toBeCalledWith(
+      '139560936744456_139620233405726',
+      { fields: ['message_tags'], access_token: undefined }
+    );
+  });
 });
 
 describe('#canReplyPrivately', () => {
@@ -125,6 +136,13 @@ describe('#canReplyPrivately', () => {
     client.getComment.mockResolvedValue(null);
 
     expect(await context.canReplyPrivately()).toBe(false);
+
+    expect(client.getComment).toBeCalledWith(
+      '139560936744456_139620233405726',
+      {
+        fields: ['can_reply_privately'],
+      }
+    );
   });
 
   it('should be true when can_reply_privately: true', async () => {
