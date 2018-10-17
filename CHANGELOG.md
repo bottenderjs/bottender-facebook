@@ -1,3 +1,31 @@
+# 0.4.3 / 2018-10-17
+
+- [new]`client.sendComment(objectId, comment)` - support attachment as comment:
+
+```js
+await client.sendComment('<object_id>', 'ok!'); // send as text message
+await client.sendComment('<object_id>', { message: 'ok!' });
+await client.sendComment('<object_id>', { attachment_id: '<attachment_id>' });
+await client.sendComment('<object_id>', {
+  attachment_share_url: 'https://example.com/img.gif',
+});
+await client.sendComment('<object_id>', {
+  attachment_url: 'https://example.com/img.jpg',
+});
+```
+
+- [new] `context.sendComment(comment)` - support attachment as comment:
+
+```js
+await context.sendComment('ok!'); // send as text message
+await context.sendComment({ message: 'ok!' });
+await context.sendComment({ attachment_id: '<attachment_id>' });
+await context.sendComment({
+  attachment_share_url: 'https://example.com/img.gif',
+});
+await context.sendComment({ attachment_url: 'https://example.com/img.jpg' });
+```
+
 # 0.4.2 / 2018-09-11
 
 - [new] add fields support to `getComment` #47
@@ -80,3 +108,7 @@ messaging-api-messenger: ^0.6.9
 # 0.2.1 / 2017-11-29
 
 - [fix] Fixed some bugs to support Bottender 0.14
+
+```
+
+```
