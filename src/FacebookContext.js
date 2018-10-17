@@ -4,7 +4,7 @@ import { MessengerContext } from 'bottender';
 
 export default class FacebookContext extends MessengerContext {
   // https://developers.facebook.com/docs/graph-api/reference/v3.1/object/private_replies
-  sendPrivateReply(message) {
+  sendPrivateReply(message: string): Promise<any> {
     const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
 
     if (this._event.isSentByPage) {
@@ -17,7 +17,16 @@ export default class FacebookContext extends MessengerContext {
   }
 
   // https://developers.facebook.com/docs/graph-api/reference/v3.1/object/comments/
-  sendComment(message) {
+  sendComment(
+    message:
+      | string
+      | {
+          attachment_id?: string,
+          attachment_share_url?: string,
+          attachment_url?: string,
+          message?: string,
+        }
+  ): Promise<{ id: string }> {
     const objectId = this._event.isFirstLayerComment
       ? this._event.rawEvent.value.comment_id
       : this._event.rawEvent.value.parent_id; // FIXME: postId
@@ -32,7 +41,7 @@ export default class FacebookContext extends MessengerContext {
   }
 
   // https://developers.facebook.com/docs/graph-api/reference/v3.1/object/likes
-  sendLike() {
+  sendLike(): Promise<{ success: boolean }> {
     const objectId = this._event.rawEvent.value.comment_id; // FIXME: postId
 
     return this._client.sendLike(objectId, {
@@ -41,7 +50,7 @@ export default class FacebookContext extends MessengerContext {
   }
 
   // https://developers.facebook.com/docs/graph-api/reference/v3.1/comment
-  getComment(options) {
+  getComment(options): Promise<Array<any>> {
     const commentId = this._event.rawEvent.value.comment_id;
 
     if (!commentId) {
@@ -65,7 +74,7 @@ export default class FacebookContext extends MessengerContext {
     });
   }
 
-  async canReplyPrivately() {
+  async canReplyPrivately(): Promise<boolean> {
     const comment = await this.getComment({ fields: ['can_reply_privately'] });
 
     if (!comment) return false;

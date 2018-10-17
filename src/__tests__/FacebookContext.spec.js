@@ -108,6 +108,58 @@ describe('#sendComment', () => {
 
     expect(client.sendComment).not.toBeCalled();
   });
+
+  it('should call client with message', async () => {
+    const { context, client } = setup();
+
+    await context.sendComment({ message: 'Public Reply!' });
+
+    expect(client.sendComment).toBeCalledWith(
+      '139560936744456_139562213411528',
+      { message: 'Public Reply!' },
+      { access_token: undefined }
+    );
+  });
+
+  it('should call client with attachment_id', async () => {
+    const { context, client } = setup();
+
+    await context.sendComment({ attachment_id: '<attachment_id>' });
+
+    expect(client.sendComment).toBeCalledWith(
+      '139560936744456_139562213411528',
+      { attachment_id: '<attachment_id>' },
+      { access_token: undefined }
+    );
+  });
+
+  it('should call client with attachment_share_url', async () => {
+    const { context, client } = setup();
+
+    await context.sendComment({
+      attachment_share_url: 'https://example.com/img.gif',
+    });
+
+    expect(client.sendComment).toBeCalledWith(
+      '139560936744456_139562213411528',
+      { attachment_share_url: 'https://example.com/img.gif' },
+      { access_token: undefined }
+    );
+  });
+
+  it('should call client with attachment_url', async () => {
+    const { context, client } = setup();
+
+    await context.sendComment({
+      attachment_url: 'https://example.com/img.jpg',
+    });
+
+    expect(client.sendComment).toBeCalledWith(
+      '139560936744456_139562213411528',
+      { attachment_url: 'https://example.com/img.jpg' },
+      { access_token: undefined }
+    );
+  });
 });
 
 describe('#sendPrivateReply', () => {

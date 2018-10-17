@@ -20,7 +20,7 @@ export default class FacebookClient extends MessengerClient {
 
   sendPrivateReply = (
     objectId: string,
-    message: Object,
+    message: string,
     { access_token: customAccessToken }: { access_token?: string } = {}
   ): Promise<any> =>
     this._axios
@@ -35,18 +35,34 @@ export default class FacebookClient extends MessengerClient {
 
   sendComment = (
     objectId: string,
-    message: Object,
+    comment:
+      | string
+      | {
+          attachment_id?: string,
+          attachment_share_url?: string,
+          attachment_url?: string,
+          message?: string,
+        },
     { access_token: customAccessToken }: { access_token?: string } = {}
-  ): Promise<any> =>
-    this._axios
+  ): Promise<any> => {
+    let body;
+
+    if (typeof comment === 'string') {
+      body = {
+        message: comment,
+      };
+    } else {
+      body = comment;
+    }
+
+    return this._axios
       .post(
         `/${objectId}/comments?access_token=${customAccessToken ||
           this._accessToken}`,
-        {
-          message,
-        }
+        body
       )
       .then(res => res.data, handleError);
+  };
 
   sendLike = (
     objectId: string,
