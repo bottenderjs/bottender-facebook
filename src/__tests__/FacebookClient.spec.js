@@ -77,6 +77,76 @@ describe('send api', () => {
       expect(res).toEqual(reply);
     });
 
+    it('should support object with message', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onPost(`/${OBJECT_ID}/comments?access_token=${ACCESS_TOKEN}`, {
+          message: 'Hello!',
+        })
+        .reply(200, reply);
+
+      const res = await client.sendComment(OBJECT_ID, { message: 'Hello!' });
+
+      expect(res).toEqual(reply);
+    });
+
+    it('should support object with attachment_id', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onPost(`/${OBJECT_ID}/comments?access_token=${ACCESS_TOKEN}`, {
+          attachment_id: '<attachment_id>',
+        })
+        .reply(200, reply);
+
+      const res = await client.sendComment(OBJECT_ID, {
+        attachment_id: '<attachment_id>',
+      });
+
+      expect(res).toEqual(reply);
+    });
+
+    it('should support object with attachment_share_url', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onPost(`/${OBJECT_ID}/comments?access_token=${ACCESS_TOKEN}`, {
+          attachment_share_url: 'https://example.com/img.gif',
+        })
+        .reply(200, reply);
+
+      const res = await client.sendComment(OBJECT_ID, {
+        attachment_share_url: 'https://example.com/img.gif',
+      });
+
+      expect(res).toEqual(reply);
+    });
+
+    it('should support object with attachment_url', async () => {
+      const { client, mock } = createMock();
+
+      const reply = {};
+
+      mock
+        .onPost(`/${OBJECT_ID}/comments?access_token=${ACCESS_TOKEN}`, {
+          attachment_url: 'https://example.com/img.jpg',
+        })
+        .reply(200, reply);
+
+      const res = await client.sendComment(OBJECT_ID, {
+        attachment_url: 'https://example.com/img.jpg',
+      });
+
+      expect(res).toEqual(reply);
+    });
+
     it('support custom token', async () => {
       const { client, mock } = createMock();
 

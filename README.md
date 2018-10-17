@@ -85,20 +85,58 @@ const bot = new Bot({
 
 ### Client
 
-- `client.sendComment`
-- `client.sendPrivateReply`
-- `client.sendLike`
-- `client.getComment`
-- `client.getLikes`
+- `client.sendComment(objectId, comment)`
+
+```js
+await client.sendComment('<object_id>', 'ok!'); // send as text message
+await client.sendComment('<object_id>', { message: 'ok!' });
+await client.sendComment('<object_id>', { attachment_id: '<attachment_id>' });
+await client.sendComment('<object_id>', {
+  attachment_share_url: 'https://example.com/img.gif',
+});
+await client.sendComment('<object_id>', {
+  attachment_url: 'https://example.com/img.jpg',
+});
+```
+
+- `client.sendPrivateReply(objectId, text)`
+
+```js
+await client.sendPrivateReply('<object_id>', 'ok!');
+```
+
+- `client.sendLike()`
+- `client.getComment()`
+- `client.getLikes()`
 
 ### Context
 
-- `context.sendComment`
-- `context.sendPrivateReply`
-- `context.sendLike`
-- `context.getComment`
-- `context.getLikes`
-- `context.canReplyPrivately`
+- `context.sendComment(comment)`
+
+```js
+await context.sendComment('ok!'); // send as text message
+await context.sendComment({ message: 'ok!' });
+await context.sendComment({ attachment_id: '<attachment_id>' });
+await context.sendComment({
+  attachment_share_url: 'https://example.com/img.gif',
+});
+await context.sendComment({ attachment_url: 'https://example.com/img.jpg' });
+```
+
+- `context.sendPrivateReply(text)`
+
+```js
+await context.sendPrivateReply('ok!');
+```
+
+- `context.sendLike()`
+- `context.getComment()`
+- `context.getLikes()`
+- `context.canReplyPrivately()`
+
+```js
+await context.canReplyPrivately(); // true
+```
 
 ### Event
 
