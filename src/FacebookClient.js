@@ -8,15 +8,19 @@ function handleError(err) {
   throw new AxiosError(msg, err);
 }
 
+type ClientConfig = {
+  accessToken: string,
+  appSecret?: string,
+  version?: string,
+  origin?: string,
+  onRequest?: Function,
+};
+
 export default class FacebookClient extends MessengerClient {
   static connect = (
-    accessToken: string,
+    accessTokenOrConfig: string | ClientConfig,
     version?: string = '2.11'
-  ): FacebookClient => new FacebookClient(accessToken, version);
-
-  constructor(accessToken: string, version?: string = '2.11') {
-    super(accessToken, version);
-  }
+  ): FacebookClient => new FacebookClient(accessTokenOrConfig, version);
 
   sendPrivateReply = (
     objectId: string,
