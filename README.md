@@ -68,7 +68,7 @@ You can use other version by following this example:
 
 ```js
 const { Bot } = require('bottender');
-const { FacebookConnector, FacebookClient } = require('bottender-fb');
+const { FacebookConnector, FacebookClient } = require('bottender-facebook');
 
 const bot = new Bot({
   connector: new FacebookConnector({
