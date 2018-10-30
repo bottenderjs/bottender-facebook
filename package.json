@@ -1,63 +1,114 @@
 {
   "name": "bottender-facebook",
-  "version": "0.4.3",
   "description": "Facebook connector for Bottender.",
+  "version": "0.4.3",
   "main": "lib/index.js",
-  "keywords": [
-    "bottender",
-    "facebook",
-    "fb",
-    "connector"
-  ],
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "npm run clean && babel src -d lib --ignore __tests__",
-    "clean": "rimraf lib",
+    "build": "npm run clean && babel src -d lib --ignore **/__tests__,**/__mocks__ --copy-files",
     "check": "flow check",
+    "clean": "rimraf lib",
     "lint": "eslint src examples",
     "lint:fix": "npm run lint -- --fix",
     "lint:staged": "lint-staged",
-    "precommit": "lint-staged",
+    "prepublish": "npm run build",
     "test": "npm run lint:fix && npm run testonly && npm run check",
     "testonly": "jest",
     "testonly:cov": "jest --coverage --runInBand --forceExit",
     "testonly:watch": "jest --watch",
-    "preversion": "npm test",
-    "prepublish": "npm run build"
+    "preversion": "npm test"
   },
   "dependencies": {
-    "axios-error": "^0.7.6",
-    "bottender": "^0.15.6",
-    "messaging-api-messenger": "^0.7.6",
+    "axios-error": "^0.7.11",
+    "bottender": "^0.15.8",
+    "messaging-api-messenger": "^0.7.11",
     "warning": "^4.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
     "axios-mock-adapter": "^1.15.0",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^9.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
-    "eslint": "^5.5.0",
-    "eslint-config-prettier": "^3.0.1",
-    "eslint-config-yoctol-base": "^0.17.1",
-    "eslint-plugin-flowtype": "^2.50.0",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.7.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-yoctol-base": "^0.18.0",
+    "eslint-plugin-flowtype": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.3.0",
-    "flow-bin": "^0.80.0",
-    "jest": "^23.5.0",
-    "lint-staged": "^7.2.2",
-    "prettier": "^1.14.2",
+    "flow-bin": "^0.84.0",
+    "husky": "^1.1.2",
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "prettier-package-json": "^2.0.1",
     "rimraf": "^2.6.2"
+  },
+  "keywords": [
+    "bottender",
+    "connector",
+    "facebook",
+    "fb"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/examples/",
+      "/lib/"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testEnvironment": "node",
+    "resetModules": true,
+    "resetMocks": true
   },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
       "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "package.json": [
+      "prettier-package-json --write",
+      "prettier --write",
+      "git add"
+    ],
+    ".babelrc": [
+      "prettier --parser json --write",
+      "git add"
     ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true
   }
 }
