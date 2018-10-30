@@ -63,7 +63,7 @@ const server = createServer(bot);
 
 ### Custom Graph API version
 
-The default `Graph API` version is `v2.11` (recommended). \
+The default `Graph API` version is `v3.2` (recommended). \
 You can use other version by following this example:
 
 ```js
@@ -75,7 +75,7 @@ const bot = new Bot({
     appSecret: APP_SECRET,
     client: FacebookClient.connect(
       ACCESS_TOKEN,
-      '2.11'
+      '3.2'
     ),
   }),
 });

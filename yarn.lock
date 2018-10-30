@@ -1623,10 +1623,10 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bottender@^0.15.8:
-  version "0.15.8"
-  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.15.8.tgz#603f81799a8a299e2343bd48b8b4c9ead595269d"
-  integrity sha512-wBeLl/KxIxDXYENAjSyr3/+z7XUAoq5wFVDO8mnigjbUs/BL93NkvJX7gl6rpBGTizH7v1Ava5NGlwkU+d8xTw==
+bottender@^0.15.9:
+  version "0.15.9"
+  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.15.9.tgz#84976cd85e0ff840d354ae67c83a73f53311b29b"
+  integrity sha512-3ad3wzD/DC6hqEh6txleGcXdyHIaUcP7NUJJ5TjUkzaEPYPMcwVf8VJ91sPtl0/VWjFLiJNJWFOw99D/+q+BpA==
   dependencies:
     "@slack/client" "^4.8.0"
     axios "^0.18.0"
@@ -1642,7 +1642,7 @@ bottender@^0.15.8:
     delay "^4.1.0"
     express "^4.16.4"
     figures "^2.0.0"
-    file-type "^10.0.0"
+    file-type "^10.1.0"
     fs-extra "^7.0.0"
     hasha "^3.0.0"
     import-fresh "^2.0.0"
@@ -1652,13 +1652,13 @@ bottender@^0.15.8:
     jfs "^0.3.0"
     joi "11.4.0"
     jsonfile "^5.0.0"
-    koa "^2.5.3"
+    koa "^2.6.1"
     koa-bodyparser "^4.2.1"
     koa-compose "^4.1.0"
     koa-router "^7.4.0"
     lodash "^4.17.11"
     lru-cache "^4.1.3"
-    messaging-api-line "^0.7.11"
+    messaging-api-line "^0.7.12"
     messaging-api-messenger "^0.7.11"
     messaging-api-slack "^0.7.11"
     messaging-api-telegram "^0.7.11"
@@ -3218,10 +3218,10 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-type@^10.0.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/file-type/-/file-type-10.1.0.tgz#f692a28722e1ac8e206e68fcc2fb032a759d16d0"
-  integrity sha512-fkjfXnqBRrdUFTS6opakWyMXb+uzDv8zOCqjSOWPbzMLnYnmnUEv/RNY9igkk4nc8TVL44Xd1OCC2fJXH3eb7Q==
+file-type@^10.1.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-10.2.0.tgz#91177ceb904963e2be53add360b213c2dc273f64"
+  integrity sha512-eqX81S1PWdLDPW39yyB214TVVOsUQjSmPcyUjeVH6ksH+94Y2YA/ItiIwa53rJiSofJZLK6lGsuCE3rwt0vp4w==
 
 file-type@^4.1.0:
   version "4.4.0"
@@ -5071,7 +5071,7 @@ koa-router@^7.4.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
-koa@^2.5.3:
+koa@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/koa/-/koa-2.6.1.tgz#88cabb18cd297e0577a37e40f400c4b6f1699fef"
   integrity sha512-n9R5Eex4y0drUeqFTeCIeXyz8wjr2AxBo2Cq8LvmiXbJl4yDA5KIrecMPkhnmgACZnPXMRyCLbJoyLmpM9aFAw==
@@ -5449,7 +5449,7 @@ merge@^1.1.3:
   resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.0.tgz#7531e39d4949c281a66b8c5a6e0265e8b05894da"
   integrity sha1-dTHjnUlJwoGma4xabgJl6LBYlNo=
 
-messaging-api-line@^0.7.11:
+messaging-api-line@^0.7.12:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/messaging-api-line/-/messaging-api-line-0.7.12.tgz#d7f503aba9fc5d71d389a7f5a20af56eeab8c23a"
   integrity sha512-rQw9t+w/HuyoLE28+7z8leu5ot6wARiB6zttEgIAtF5tAtTp5mgqxiUtdxA3Mn8yRPsfN2bcF4QHCC3EUtTB+Q==

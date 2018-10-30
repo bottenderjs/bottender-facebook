@@ -19,7 +19,7 @@ type ClientConfig = {
 export default class FacebookClient extends MessengerClient {
   static connect = (
     accessTokenOrConfig: string | ClientConfig,
-    version?: string = '2.11'
+    version?: string = '3.2'
   ): FacebookClient => new FacebookClient(accessTokenOrConfig, version);
 
   sendPrivateReply = (
