@@ -1,3 +1,24 @@
+# 0.5.0 / 2018-10-30
+
+- [breaking] Upgrade default graph api version to `3.2`
+- [new] rewrite `FacebookClient` to accept custom `origin` url (#54):
+
+```js
+const { Bot } = require('bottender');
+const { FacebookConnector, FacebookClient } = require('bottender-facebook');
+
+const bot = new Bot({
+  connector: new FacebookConnector({
+    appSecret: APP_SECRET,
+    client: FacebookClient.connect({
+      accessToken: ACCESS_TOKEN,
+      version: '3.2',
+      origin: 'https://mydummytestserver.com',
+    }),
+  }),
+});
+```
+
 # 0.4.3 / 2018-10-17
 
 - [new]`client.sendComment(objectId, comment)` - support attachment as comment:
