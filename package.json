@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "axios-error": "^0.7.11",
-    "bottender": "^0.15.8",
+    "bottender": "^0.15.9",
     "messaging-api-messenger": "^0.7.11",
     "warning": "^4.0.2"
   },
