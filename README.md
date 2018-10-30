@@ -73,10 +73,10 @@ const { FacebookConnector, FacebookClient } = require('bottender-facebook');
 const bot = new Bot({
   connector: new FacebookConnector({
     appSecret: APP_SECRET,
-    client: FacebookClient.connect(
-      ACCESS_TOKEN,
-      '3.2'
-    ),
+    client: FacebookClient.connect({
+      accessToken: ACCESS_TOKEN,
+      version: '3.2',
+    }),
   }),
 });
 ```
