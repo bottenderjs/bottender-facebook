@@ -16,9 +16,9 @@ type ConstructorOptions = {|
 |};
 
 export default class FacebookConnector extends MessengerConnector {
-  _client: FacebookClient;
+  _client: FacebookClient = this._client;
 
-  _appSecret: ?string;
+  _appSecret: ?string = this._appSecret;
 
   constructor({
     accessToken,
