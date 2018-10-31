@@ -1,3 +1,7 @@
+# 0.5.1 / 2018-10-31
+
+- [fix] fix FacebookConnector class property initialization.
+
 # 0.5.0 / 2018-10-30
 
 - [breaking] Upgrade default graph api version to `3.2`
