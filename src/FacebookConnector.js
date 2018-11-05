@@ -13,6 +13,7 @@ type ConstructorOptions = {|
   client?: FacebookClient,
   mapPageToAccessToken?: (pageId: string) => Promise<string>,
   verifyToken?: ?string,
+  batchConfig?: ?Object,
 |};
 
 export default class FacebookConnector extends MessengerConnector {
@@ -26,6 +27,7 @@ export default class FacebookConnector extends MessengerConnector {
     client,
     mapPageToAccessToken,
     verifyToken,
+    batchConfig,
   }: ConstructorOptions) {
     const _client = client || FacebookClient.connect(accessToken || '');
     super({
@@ -34,6 +36,7 @@ export default class FacebookConnector extends MessengerConnector {
       client: _client,
       mapPageToAccessToken,
       verifyToken,
+      batchConfig,
     });
   }
 
@@ -55,15 +58,11 @@ export default class FacebookConnector extends MessengerConnector {
     );
   }
 
-  async createContext({
-    event,
-    session,
-    initialState,
-  }: Object): FacebookContext {
+  async createContext(params: Object): FacebookContext {
     let customAccessToken;
 
     if (this._mapPageToAccessToken) {
-      const { pageId } = event;
+      const { pageId } = params.event;
 
       if (!pageId) {
         warning(false, 'Could not find pageId from request body.');
@@ -72,11 +71,11 @@ export default class FacebookConnector extends MessengerConnector {
       }
     }
     return new FacebookContext({
+      ...params,
       client: this._client,
-      event,
-      session,
-      initialState,
       customAccessToken,
+      batchQueue: this._batchQueue,
+      appId: this._appId,
     });
   }
 }
