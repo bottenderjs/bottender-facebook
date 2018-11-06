@@ -33,6 +33,7 @@ bot.onEvent(async context => {
     try {
       await context.sendPrivateReply('OK!');
       await context.sendComment('Public reply!');
+      await context.sendLike();
     } catch (err) {
       console.log(err);
     }
