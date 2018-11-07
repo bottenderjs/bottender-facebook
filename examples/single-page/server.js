@@ -7,7 +7,6 @@ require('dotenv').config();
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 const APP_SECRET = process.env.APP_SECRET;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
-const POST_ID = process.env.POST_ID;
 
 const bot = new Bot({
   connector: new FacebookConnector({
@@ -19,11 +18,7 @@ const bot = new Bot({
 bot.onEvent(async context => {
   console.log(context.event);
 
-  if (
-    context.event.isCommentAdd &&
-    context.event.comment.post_id === POST_ID &&
-    !context.event.isSentByPage
-  ) {
+  if (context.event.isCommentAdd && !context.event.isSentByPage) {
     try {
       await context.sendPrivateReply('OK!');
       await context.sendComment('Public Reply!');
