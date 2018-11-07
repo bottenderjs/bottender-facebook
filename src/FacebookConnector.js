@@ -14,6 +14,8 @@ type ConstructorOptions = {|
   mapPageToAccessToken?: (pageId: string) => Promise<string>,
   verifyToken?: ?string,
   batchConfig?: ?Object,
+  origin?: string,
+  skipAppSecretProof?: ?boolean,
 |};
 
 export default class FacebookConnector extends MessengerConnector {
@@ -28,8 +30,17 @@ export default class FacebookConnector extends MessengerConnector {
     mapPageToAccessToken,
     verifyToken,
     batchConfig,
+    origin,
+    skipAppSecretProof,
   }: ConstructorOptions) {
-    const _client = client || FacebookClient.connect(accessToken || '');
+    const _client =
+      client ||
+      FacebookClient.connect({
+        accessToken: accessToken || '',
+        appSecret,
+        origin,
+        skipAppSecretProof,
+      });
     super({
       accessToken,
       appSecret,
@@ -37,6 +48,8 @@ export default class FacebookConnector extends MessengerConnector {
       mapPageToAccessToken,
       verifyToken,
       batchConfig,
+      origin,
+      skipAppSecretProof,
     });
   }
 
