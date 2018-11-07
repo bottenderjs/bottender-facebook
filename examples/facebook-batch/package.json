@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "dev": "nodemon index.js",
+    "subscribe": "node subscribe.js",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bottender": "latest",
+    "bottender-facebook": "latest",
+    "dotenv": "^4.0.0",
+    "messenger-batch": "^0.3.0"
+  }
+}

@@ -1,6 +1,7 @@
 const { Bot } = require('bottender');
 const { createServer } = require('bottender/koa');
 const { FacebookConnector } = require('bottender-facebook');
+const { isError613 } = require('messenger-batch');
 
 require('dotenv').config();
 
@@ -13,6 +14,11 @@ const bot = new Bot({
   connector: new FacebookConnector({
     accessToken: ACCESS_TOKEN,
     appSecret: APP_SECRET,
+    batchConfig: {
+      delay: 1000,
+      shouldRetry: isError613, // (#613) Calls to this api have exceeded the rate limit.
+      retryTimes: 2,
+    },
   }),
 });
 

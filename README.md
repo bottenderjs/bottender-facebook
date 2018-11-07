@@ -131,6 +131,27 @@ await context.sendPrivateReply('ok!');
 
 - `context.sendLike()`
 - `context.getComment()`
+
+```js
+const comment = await context.getComment({ fields: ['message_tags'] });
+
+console.log(comment);
+// {
+//   id: '2013582382205928_2258908961006601',
+//   // facebook returns undefined as message_tags instead of empty array
+//   // when there is no tag
+//   message_tags: [
+//     {
+//       id: '1895382890692545',
+//       length: 8,
+//       name: 'Bot Demo',
+//       offset: 0,
+//       type: 'page'
+//     },
+//   ],
+// }
+```
+
 - `context.getLikes()`
 - `context.canReplyPrivately()`
 
