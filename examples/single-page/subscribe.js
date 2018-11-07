@@ -1,5 +1,7 @@
 const axios = require('axios');
 
+require('dotenv').config();
+
 const USER_TOKEN = process.env.USER_TOKEN;
 const PAGE_ID = process.env.PAGE_ID;
 

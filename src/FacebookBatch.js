@@ -1,9 +1,15 @@
-function sendPrivateReply(objectId: string, message: string) {
+/* @flow */
+/* eslint-disable camelcase */
+
+import querystring from 'querystring';
+
+function sendPrivateReply(objectId: string, message: string, options?: Object) {
   return {
     method: 'POST',
     relative_url: `${objectId}/private_replies`,
     body: {
       message,
+      ...options,
     },
   };
 }
@@ -17,7 +23,8 @@ function sendComment(
         attachment_share_url?: string,
         attachment_url?: string,
         message?: string,
-      }
+      },
+  options?: Object
 ) {
   let body;
 
@@ -32,34 +39,65 @@ function sendComment(
   return {
     method: 'POST',
     relative_url: `${objectId}/comments`,
-    body,
+    body: {
+      ...body,
+      ...options,
+    },
   };
 }
 
-function sendLike(objectId: string) {
+function sendLike(objectId: string, options?: Object) {
   return {
     method: 'POST',
     relative_url: `${objectId}/likes`,
+    body: {
+      ...options,
+    },
   };
 }
 
 function getComment(
   commentId: string,
-  { fields }: { fields?: ?(Array<string> | string) } = {}
+  {
+    fields,
+    access_token,
+  }: { fields?: ?(Array<string> | string), access_token?: ?string } = {}
 ) {
   const conjunctFields = Array.isArray(fields) ? fields.join(',') : fields;
-  const fieldsQuery = conjunctFields ? `fields=${conjunctFields}` : '';
+
+  const query = {};
+
+  if (conjunctFields) {
+    query.fields = conjunctFields;
+  }
+
+  if (access_token) {
+    query.access_token = access_token;
+  }
 
   return {
     method: 'GET',
-    relative_url: `${commentId}?${fieldsQuery}`,
+    relative_url: `${commentId}?${querystring.stringify(query)}`,
   };
 }
 
-function getLikes(objectId: string, { summary }: { summary?: boolean } = {}) {
+function getLikes(
+  objectId: string,
+  { summary, access_token }: { summary?: boolean, access_token?: ?string } = {}
+) {
+  const query = {};
+
+  if (summary) {
+    query.summary = summary;
+  }
+
+  if (access_token) {
+    query.access_token = access_token;
+  }
+
   return {
     method: 'GET',
-    relative_url: `${objectId}/likes?${summary ? 'summary=true' : ''}`,
+    relative_url: `${objectId}/likes?${querystring.stringify(query)}`,
   };
 }
 
