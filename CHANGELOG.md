@@ -1,3 +1,53 @@
+# 0.6.0 / 2018-11-08
+
+- [new] add `skipAppSecretProof` and `origin` support:
+
+```js
+const bot = new Bot({
+  connector: new FacebookConnector({
+    accessToken: ACCESS_TOKEN,
+    appSecret: APP_SECRET,
+    origin: 'https://mydummytestserver.com',
+    skipAppSecretProof: true,
+  }),
+});
+```
+
+- [new] add batch support:
+
+```js
+const { isError613 } = require('messenger-batch');
+
+const bot = new Bot({
+  connector: new FacebookConnector({
+    accessToken: ACCESS_TOKEN,
+    appSecret: APP_SECRET,
+    batchConfig: {
+      delay: 1000,
+      shouldRetry: isError613, // (#613) Calls to this api have exceeded the rate limit.
+      retryTimes: 2,
+    },
+  }),
+});
+```
+
+For multiple pages, top level access token should be specified for batch request:
+
+```js
+const bot = new Bot({
+  connector: new FacebookConnector({
+    accessToken: ACCESS_TOKEN,
+    appSecret: APP_SECRET,
+    mapPageToAccessToken,
+    batchConfig: {
+      delay: 1000,
+      shouldRetry: isError613, // (#613) Calls to this api have exceeded the rate limit.
+      retryTimes: 2,
+    },
+  }),
+});
+```
+
 # 0.5.1 / 2018-10-31
 
 - [fix] fix FacebookConnector class property initialization.
