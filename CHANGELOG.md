@@ -1,3 +1,7 @@
+# 0.6.1 / 2018-11-08
+
+- [deps] update `messaging-api-messenger`
+
 # 0.6.0 / 2018-11-08
 
 - [new] add `skipAppSecretProof` and `origin` support:
