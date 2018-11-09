@@ -1,3 +1,15 @@
+# 0.6.2 / 2018-11-09
+
+- [new] Add `skipProfile` option to `FacebookConnector` to skip auto updating user profile:
+
+```js
+const connector = new FacebookConnector({
+  accessToken: ACCESS_TOKEN,
+  appSecret: APP_SECRET,
+  skipProfile: true,
+});
+```
+
 # 0.6.1 / 2018-11-08
 
 - [deps] update `messaging-api-messenger`
