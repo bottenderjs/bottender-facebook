@@ -16,6 +16,7 @@ type ConstructorOptions = {|
   batchConfig?: ?Object,
   origin?: string,
   skipAppSecretProof?: ?boolean,
+  skipProfile?: ?boolean,
 |};
 
 export default class FacebookConnector extends MessengerConnector {
@@ -32,6 +33,7 @@ export default class FacebookConnector extends MessengerConnector {
     batchConfig,
     origin,
     skipAppSecretProof,
+    skipProfile,
   }: ConstructorOptions) {
     const _client =
       client ||
@@ -50,6 +52,7 @@ export default class FacebookConnector extends MessengerConnector {
       batchConfig,
       origin,
       skipAppSecretProof,
+      skipProfile,
     });
   }
 

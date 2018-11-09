@@ -1658,10 +1658,10 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bottender@^0.15.11:
-  version "0.15.11"
-  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.15.11.tgz#5cfe27bf87fe2dc0f743a566468a4e6af913488a"
-  integrity sha512-EmNFF9ZFUxbp1/Zb19A1a9nuX2kSo8zr5xlulTBIjUjSlTrL8C07CXBuJWisoC7x/iDpNd5nfGkoQf3/rhvcyg==
+bottender@^0.15.12:
+  version "0.15.12"
+  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.15.12.tgz#b9018fa19303bd70a06e5038d92016513d81a9fd"
+  integrity sha512-9Lj52QT/goc4qto3VkWnODSYMOMhLAS5RE+4u1MstoyL93BawoSJPcO2o00vpo12Z5sGOhBWAIpTyiZeotKheA==
   dependencies:
     "@slack/client" "^4.8.0"
     arg "^2.0.0"
