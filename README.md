@@ -9,7 +9,7 @@
 ## Installation
 
 ```sh
-npm install bottender-facebook
+npm install bottender-facebook bottender messaging-api-messenger
 ```
 
 ## Requirement
