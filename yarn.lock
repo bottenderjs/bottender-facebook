@@ -1536,10 +1536,10 @@ body-parser@1.18.3, body-parser@^1.18.3:
     raw-body "2.3.3"
     type-is "~1.6.16"
 
-bottender@^0.15.15:
-  version "0.15.15"
-  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.15.15.tgz#ef628d0328749d0023d3b0734a4e7937cacecd78"
-  integrity sha512-gc4Az/3+v/ApoGo0Si2mHukHfUJJvmG+VluPHJ9ujeYevA1JdNRgPMBOwA/sQUXB616O3zRE+j3C/+P64gifrA==
+bottender@^0.15.16:
+  version "0.15.16"
+  resolved "https://registry.yarnpkg.com/bottender/-/bottender-0.15.16.tgz#5320057c869f2a0eb5246c7c773927915fc65de9"
+  integrity sha512-t7p8xw/EgA4/XN+zNLa1i+G4id1vNWegW0s9QWxr5vehZWS8OrETuO4vFtlC5Qkq6NOJ6oaFZ19S4LKP4l2FXg==
   dependencies:
     "@slack/client" "^4.8.0"
     arg "^2.0.0"
@@ -1573,7 +1573,7 @@ bottender@^0.15.15:
     lodash "^4.17.11"
     lru-cache "^4.1.3"
     messaging-api-line "^0.7.15"
-    messaging-api-messenger "^0.7.15"
+    messaging-api-messenger "^0.7.16"
     messaging-api-slack "^0.7.11"
     messaging-api-telegram "^0.7.11"
     messaging-api-viber "^0.7.11"
@@ -5234,10 +5234,27 @@ messaging-api-line@^0.7.15:
     lodash.omit "^4.5.0"
     url-join "^4.0.0"
 
-messaging-api-messenger@^0.7.15:
-  version "0.7.15"
-  resolved "https://registry.yarnpkg.com/messaging-api-messenger/-/messaging-api-messenger-0.7.15.tgz#bcc3ac80ffa9cc35c9706aab6a4452ed83c2ffe2"
-  integrity sha512-jVWLzL/3WP5KW9Di8nFkwc1q/TTzvIbh1BMG+Jfjo6kJjt7h5HCiKC+xrz2Y2yUVGVQ5zksIhpQ0f47ohHdn+Q==
+messaging-api-messenger@^0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/messaging-api-messenger/-/messaging-api-messenger-0.7.16.tgz#b030b71fa84d265ad7662b8d636599a1cd9e2a2a"
+  integrity sha512-5V9phjvDGnBwcgWS09I1T8NEHS4znzpxAoDwjwAd4grlfVpq8m3sse4phT36MRCVorcuW/RxqHkCsFPnM+XK0g==
+  dependencies:
+    append-query "^2.0.1"
+    axios "^0.18.0"
+    axios-error "^0.7.11"
+    debug "^4.0.1"
+    form-data "^2.3.2"
+    invariant "^2.2.4"
+    is-plain-object "^2.0.4"
+    lodash.get "^4.4.2"
+    lodash.omit "^4.5.0"
+    url-join "^4.0.0"
+    warning "^4.0.2"
+
+messaging-api-messenger@^0.8.0-alpha.1:
+  version "0.8.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/messaging-api-messenger/-/messaging-api-messenger-0.8.0-alpha.1.tgz#57b04aab529d004ac56fdc4a9243b47a5f6dfa49"
+  integrity sha512-oVlQT0bQKf2pjWlfz5G/QWlpgOPY5dk4DutfR4RN25BRS1r7qXNFisEdi8j+cZfxTgU2LUNwD4VBnbfRToiLFQ==
   dependencies:
     append-query "^2.0.1"
     axios "^0.18.0"

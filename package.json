@@ -22,9 +22,11 @@
   },
   "dependencies": {
     "axios-error": "^0.7.11",
-    "bottender": "^0.15.15",
-    "messaging-api-messenger": "^0.7.15",
     "warning": "^4.0.2"
+  },
+  "peerDependencies": {
+    "bottender": ">= 0.15.15",
+    "messaging-api-messenger": ">= 0.7.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
@@ -37,6 +39,7 @@
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "bottender": "^0.15.16",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-yoctol-base": "^0.18.0",
@@ -49,6 +52,7 @@
     "jest": "^23.6.0",
     "jest-junit": "^5.2.0",
     "lint-staged": "^8.1.0",
+    "messaging-api-messenger": "^0.8.0-alpha.1",
     "prettier": "^1.15.3",
     "prettier-package-json": "^2.0.1",
     "rimraf": "^2.6.2"
