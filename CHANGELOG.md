@@ -1,3 +1,7 @@
+# 0.7.0 / 2019-01-30
+
+- [deps] move bottender and messaging-api-messenger to peerDependencies.
+
 # 0.6.2 / 2018-11-09
 
 - [new] Add `skipProfile` option to `FacebookConnector` to skip auto updating user profile:
