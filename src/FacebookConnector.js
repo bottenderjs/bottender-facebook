@@ -59,17 +59,26 @@ export default class FacebookConnector extends MessengerConnector {
   mapRequestToEvents(body: Object) {
     const rawEvents = this._getRawEventsFromRequest(body);
     const isStandby = this._isStandby(body);
-    let pageId = null;
-    if (body.object === 'page' && body.entry && body.entry[0]) {
-      pageId = body.entry[0].id;
+    let pageIds = [];
+
+    if (body.object === 'page' && body.entry) {
+      pageIds = body.entry
+        .map(ent => {
+          if (ent.messaging || ent.standby || ent.changes) {
+            return ent.id;
+          }
+          return null;
+        })
+        .filter(event => event != null);
     }
+
     return rawEvents.map(
-      event =>
+      (event, index) =>
         new FacebookEvent(event, {
           isStandby,
           // pageId is from Facebook events (Page webhook),
           // _getPageIdFromRawEvent() is from Messenger events
-          pageId: pageId || this._getPageIdFromRawEvent(event),
+          pageId: pageIds[index] || this._getPageIdFromRawEvent(event),
         })
     );
   }
