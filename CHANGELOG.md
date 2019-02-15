@@ -1,3 +1,7 @@
+# 0.7.1 / 2019-02-15
+
+- [fix] fix getting wrong page id when receiving batch request #69
+
 # 0.7.0 / 2019-01-30
 
 - [deps] move bottender and messaging-api-messenger to peerDependencies.
