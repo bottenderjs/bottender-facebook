@@ -196,6 +196,28 @@ export default class FacebookEvent extends MessengerEvent {
     if (!this.isFeed) {
       return false;
     }
-    return this.rawEvent.value.from.id === this.pageId;
+
+    if (
+      this.rawEvent.value.from &&
+      this.rawEvent.value.from.id === this.pageId
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Notifications for Page likes will only be sent for Pages that have fewer than 10K likes.
+  // ref: https://developers.facebook.com/docs/graph-api/webhooks/reference/page/#feed
+  get isPageLike(): boolean {
+    if (!this.isFeed) {
+      return false;
+    }
+
+    if (!this.rawEvent.value.from) {
+      return true;
+    }
+
+    return false;
   }
 }
