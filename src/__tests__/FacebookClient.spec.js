@@ -31,8 +31,9 @@ describe('send api', () => {
       const reply = {};
 
       mock
-        .onPost(`/${OBJECT_ID}/private_replies?access_token=${ACCESS_TOKEN}`, {
-          message: 'Hello!',
+        .onPost(`/me/messages?access_token=${ACCESS_TOKEN}`, {
+          recipient: { comment_id: OBJECT_ID },
+          message: { text: 'Hello!' },
         })
         .reply(200, reply);
 
@@ -47,8 +48,9 @@ describe('send api', () => {
       const reply = {};
 
       mock
-        .onPost(`/${OBJECT_ID}/private_replies?access_token=${ANOTHER_TOKEN}`, {
-          message: 'Hello!',
+        .onPost(`/me/messages?access_token=${ANOTHER_TOKEN}`, {
+          recipient: { comment_id: OBJECT_ID },
+          message: { text: 'Hello!' },
         })
         .reply(200, reply);
 
