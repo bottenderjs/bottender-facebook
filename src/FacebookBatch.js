@@ -3,14 +3,14 @@
 
 import querystring from 'querystring';
 
-function sendPrivateReply(objectId: string, message: string, options?: Object) {
+function sendPrivateReply(objectId: string, text: string, options?: Object) {
   return {
     method: 'POST',
     relative_url: 'me/messages',
     body: {
       messaging_type: 'UPDATE',
       recipient: { comment_id: objectId },
-      message,
+      text,
       ...options,
     },
   };

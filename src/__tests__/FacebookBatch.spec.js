@@ -11,7 +11,7 @@ describe('sendPrivateReply', () => {
       body: {
         messaging_type: 'UPDATE',
         recipient: { comment_id: COMMENT_ID },
-        message: 'ok',
+        text: 'ok',
       },
     });
   });
@@ -27,7 +27,7 @@ describe('sendPrivateReply', () => {
       body: {
         messaging_type: 'UPDATE',
         recipient: { comment_id: COMMENT_ID },
-        message: 'ok',
+        text: 'ok',
         access_token: CUSTOM_ACCESS_TOKEN,
       },
     });
