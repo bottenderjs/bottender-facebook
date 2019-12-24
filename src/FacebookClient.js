@@ -19,23 +19,14 @@ type ClientConfig = {
 export default class FacebookClient extends MessengerClient {
   static connect = (
     accessTokenOrConfig: string | ClientConfig,
-    version?: string = '3.2'
+    version?: string = '4.0'
   ): FacebookClient => new FacebookClient(accessTokenOrConfig, version);
 
   sendPrivateReply = (
     objectId: string,
     message: string,
-    { access_token: customAccessToken }: { access_token?: string } = {}
-  ): Promise<any> =>
-    this._axios
-      .post(
-        `/${objectId}/private_replies?access_token=${customAccessToken ||
-          this._accessToken}`,
-        {
-          message,
-        }
-      )
-      .then(res => res.data, handleError);
+    options: { access_token?: string } = {}
+  ): Promise<any> => this.sendText({ comment_id: objectId }, message, options);
 
   sendComment = (
     objectId: string,
