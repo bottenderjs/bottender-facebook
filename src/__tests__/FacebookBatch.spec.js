@@ -7,8 +7,10 @@ describe('sendPrivateReply', () => {
   it('should create send private reply request', () => {
     expect(FacebookBatch.sendPrivateReply(COMMENT_ID, 'ok')).toEqual({
       method: 'POST',
-      relative_url: '1234567890/private_replies',
+      relative_url: 'me/messages',
       body: {
+        messaging_type: 'UPDATE',
+        recipient: { comment_id: COMMENT_ID },
         message: 'ok',
       },
     });
@@ -21,8 +23,10 @@ describe('sendPrivateReply', () => {
       })
     ).toEqual({
       method: 'POST',
-      relative_url: '1234567890/private_replies',
+      relative_url: 'me/messages',
       body: {
+        messaging_type: 'UPDATE',
+        recipient: { comment_id: COMMENT_ID },
         message: 'ok',
         access_token: CUSTOM_ACCESS_TOKEN,
       },
