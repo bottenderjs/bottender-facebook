@@ -28,35 +28,78 @@ describe('send api', () => {
     it('should call private_replies api', async () => {
       const { client, mock } = createMock();
 
-      const reply = {};
+      const reply = {
+        recipient_id: OBJECT_ID,
+        message_id: 'mid.1489394984387:3dd22de509',
+      };
 
-      mock
-        .onPost(`/${OBJECT_ID}/private_replies?access_token=${ACCESS_TOKEN}`, {
-          message: 'Hello!',
-        })
-        .reply(200, reply);
+      let url;
+      let data;
+      mock.onPost().reply(config => {
+        url = config.url;
+        data = config.data;
+        return [200, reply];
+      });
 
       const res = await client.sendPrivateReply(OBJECT_ID, 'Hello!');
 
-      expect(res).toEqual(reply);
+      expect(url).toEqual(
+        `https://graph.facebook.com/v4.0/me/messages?access_token=${ACCESS_TOKEN}`
+      );
+      expect(JSON.parse(data)).toEqual({
+        messaging_type: 'UPDATE',
+        recipient: {
+          comment_id: OBJECT_ID,
+        },
+        message: {
+          text: 'Hello!',
+        },
+      });
+
+      expect(res).toEqual({
+        recipient_id: OBJECT_ID,
+        message_id: 'mid.1489394984387:3dd22de509',
+      });
     });
 
     it('support custom token', async () => {
       const { client, mock } = createMock();
 
-      const reply = {};
+      const reply = {
+        recipient_id: OBJECT_ID,
+        message_id: 'mid.1489394984387:3dd22de509',
+      };
 
-      mock
-        .onPost(`/${OBJECT_ID}/private_replies?access_token=${ANOTHER_TOKEN}`, {
-          message: 'Hello!',
-        })
-        .reply(200, reply);
+      let url;
+      let data;
+      mock.onPost().reply(config => {
+        url = config.url;
+        data = config.data;
+        return [200, reply];
+      });
 
       const res = await client.sendPrivateReply(OBJECT_ID, 'Hello!', {
         access_token: ANOTHER_TOKEN,
       });
 
-      expect(res).toEqual(reply);
+      expect(url).toEqual(
+        `https://graph.facebook.com/v4.0/me/messages?access_token=${ANOTHER_TOKEN}`
+      );
+      expect(JSON.parse(data)).toEqual({
+        access_token: ANOTHER_TOKEN,
+        messaging_type: 'UPDATE',
+        recipient: {
+          comment_id: OBJECT_ID,
+        },
+        message: {
+          text: 'Hello!',
+        },
+      });
+
+      expect(res).toEqual({
+        recipient_id: OBJECT_ID,
+        message_id: 'mid.1489394984387:3dd22de509',
+      });
     });
   });
 
