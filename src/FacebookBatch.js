@@ -10,7 +10,9 @@ function sendPrivateReply(objectId: string, text: string, options?: Object) {
     body: {
       messaging_type: 'UPDATE',
       recipient: { comment_id: objectId },
-      text,
+      message: {
+        text,
+      },
       ...options,
     },
   };
