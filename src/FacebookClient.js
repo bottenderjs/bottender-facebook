@@ -24,9 +24,9 @@ export default class FacebookClient extends MessengerClient {
 
   sendPrivateReply = (
     objectId: string,
-    message: string,
+    text: string,
     options: { access_token?: string } = {}
-  ): Promise<any> => this.sendText({ comment_id: objectId }, message, options);
+  ): Promise<any> => this.sendText({ comment_id: objectId }, text, options);
 
   sendComment = (
     objectId: string,
